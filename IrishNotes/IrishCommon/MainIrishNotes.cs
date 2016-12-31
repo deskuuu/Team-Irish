@@ -1,9 +1,11 @@
 ﻿namespace IrishNotes
 {
-    using IrishCommon.Common;
-    using IrishCommon.Common.Menu;
     using System;
     using System.Threading;
+
+    using Common;
+    using System.Collections.Generic;
+    using Common.Menu;
 
     /// <summary>
     /// The entry class of the IrishNotesApp.
@@ -11,51 +13,25 @@
     public class MainIrishNotes
     {
         public static void Main()
-        { 
+        {
             App.SetUpConsole();
+            Printer.PrintFrame();
+           
+            IList<ConsoleColor> colors = new List<ConsoleColor> { ConsoleColor.DarkGreen, ConsoleColor.DarkYellow,ConsoleColor.DarkRed};
+            Printer.PrintWelcomeText(colors,2,10);
+           
+            var from = Console.CursorTop;
 
-            // Just for test
-            var a = new string[] { "Welcome", "To", "IrishNotes!" };
-            Console.CursorLeft = Console.WindowWidth / 2;
-            // 
-            int z = 1;
-            int r = 3;
-
-            for (int i = 0; i < a.Length; i++)
-            {
-                Thread.Sleep(300);
-
-                Console.CursorTop = z;
-                if (i != 0)
-                {
-                    z = 0;
-                }
-                z += 1;
-
-                Console.CursorLeft = r;
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                foreach (var item in a[i])
-                {
-                    Console.Write(item);
-                    Console.CursorTop = z+2;
-                    Console.CursorLeft = r;
-                    r += 5;
-                }
-            }
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-
-
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-
+            Console.ForegroundColor = ConsoleColor.Green;
             Printer.PrintTextFile("../../logo.txt");
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
 
+            var to = Console.CursorTop;
+            Thread.Sleep(1500);
+            Printer.Clear(from, to);
 
             var menu = new Menu();
-            menu.PrinMenu();
-            Console.CursorVisible = false;
+            menu.Draw();
+
             Console.ReadLine();
         }
     }

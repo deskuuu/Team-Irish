@@ -1,25 +1,22 @@
 ﻿namespace IrishNotes.Common.User
 {
+    using Enumerations;
+    using Exceptions;
+    using IrishNotes.Common.Interfaces;
     using System;
     using System.Text;
 
-    using Contracts;
-    using IrishCommon.Common.Exceptions;
-    using IrishCommon.Common.User.Enumerations;
-   
     public class User : IUser
     {
         private const string DefaultFirstName = "GuestA";
         private const string DefaultLastName = "GuestAA";
         private const string DefaultUserName = "Guest";
 
-        private NotesTextColorType noteTextColor;
+        public TextColorType noteTextColor { get; set; }
 
         private string firstName;
         private string lastName;
         private string userName;
-
-      //// private char[] invalidSymbolInName = new char[] { '`', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '=', '.', ',', '+', '?', '\\', '/', '{', '}', ';', ':' };
 
         public User(string firstName = DefaultUserName, string lastName = DefaultLastName)
         {
@@ -86,6 +83,14 @@
             }
         }
 
+        public string GetUserData
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         private bool ValidateName(string name)
         {
             var isValid = true;
@@ -112,6 +117,26 @@
             stb.AppendLine($"User name: {this.userName}");
 
             return stb.ToString();
+        }
+
+        public void SaveUserData()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetPriorityNotes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GetPriorityNotes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetBonusLuck()
+        {
+            throw new NotImplementedException();
         }
     }
 }

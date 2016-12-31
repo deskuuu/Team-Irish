@@ -1,47 +1,76 @@
-﻿namespace IrishCommon.Common.Menu
+﻿namespace IrishNotes.Common.Menu
 {
     using System;
     using System.Collections.Generic;
 
-    public class Menu
-    {
-        private List<string> appMenu;
+    using Interfaces;
+    using Enumerations;
 
+    public class Menu : IDrowable, IColorable
+    {
+        /// <summary>
+        /// Automatic property with default value.
+        /// </summary>
+        public TextColorType TextColorType { get; set; } = TextColorType.DarkMagenta;
+
+        private ICollection<string> appMenu;
+
+        /// <summary>
+        /// Create a menu list with first capacity constant MenuItemCount int.
+        /// </summary>
         public Menu()
         {
-            this.appMenu = new List<string>();
+            this.appMenu = new List<string>(MenuConstants.MenuItemCount);
         }
 
+        /// <summary>
+        /// Create the app menu with options constant MenuItemCount int.
+        /// </summary>
         private void CreateMenu()
         {
-            var makeANewProfille = MenuItems.MakeProfile;
-            var makeNoteWithoughtProfille = MenuItems.MakeNoteWithoughtProfille;
-            var logOn = MenuItems.LogOn;
-            var quit = MenuItems.Quit;
+            var makeANewProfille = MenuConstants.MakeProfile;
+            var makeNoteWithoughtProfille = MenuConstants.MakeNoteWithoughtProfille;
+            var logOn = MenuConstants.LogOn;
+            var quit = MenuConstants.Quit;
 
-            var menuList = new List<string> { makeANewProfille, makeNoteWithoughtProfille, logOn, quit };
-
-            this.appMenu.AddRange(menuList);
+            this.appMenu.Add(makeANewProfille);
+            this.appMenu.Add(makeNoteWithoughtProfille);
+            this.appMenu.Add(logOn);
+            this.appMenu.Add(quit);
         }
 
-        public void PrinMenu()
+        public void SetCursorPositionAt(int left, int top)
         {
-            CreateMenu();
+            Console.SetCursorPosition(left, top);
+        }
 
-            Console.SetCursorPosition(3,13); //for test
-            Console.WriteLine(MenuItems.Caption);
+        public void Draw()
+        {
+            this.CreateMenu();
 
-            for (int i = 0; i < this.appMenu.Count; i++)
+            SetCursorPositionAt(10,4);
+            ChangeTextColorByUserChoiceWrite(TextColorType, MenuConstants.Caption);
+            SetCursorPositionAt(0, 5);
+            foreach (var menuItem in this.appMenu)
             {
-                Console.WriteLine("* " + appMenu[i] + "  ");
-                Console.WriteLine($"         For this menu item click {i}");
+                ChangeTextColorByUserChoiceWrite(TextColorType, "* ");
+                Console.WriteLine(menuItem);
+                Console.WriteLine(new string(' ', menuItem.Length));
             }
+        }
 
-            //foreach (var menuItem in this.appMenu)
-            //{
-            //    Console.Write("* " + menuItem + "  ");
-            //    // Console.WriteLine(new string(' ', menuItem.Length));
-            //}
+        public void Clean()
+        {
+            this.appMenu.Clear();
+            Console.Write(appMenu);
+        }
+
+        public void ChangeTextColorByUserChoiceWrite(TextColorType color, string text)
+        {
+            ConsoleColor originalColor = Console.ForegroundColor;
+            Console.ForegroundColor = (ConsoleColor)color;
+            Console.Write(text);
+            Console.ForegroundColor = originalColor;
         }
     }
 }

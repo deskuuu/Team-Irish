@@ -1,10 +1,6 @@
-﻿namespace IrishCommon.Common
+﻿namespace IrishNotes.Common
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class App
     {
@@ -17,6 +13,7 @@
             Console.BufferWidth = width;
             Console.BufferHeight = height;
             Console.Title = ConsoleInfoConstants.AppName;
+            Console.CursorVisible = false;
         }
     }
 }

@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace IrishCommon.Common
+namespace IrishNotes.Common
 {
-    class ConsoleInfoConstants
+    public class ConsoleInfoConstants
     {
-        public const int AppWidth = 110;
-        public const int AppHeight = 30;
+        public const int AppWidth = 90;
+        public const int AppHeight = 20;
         public const string AppName = "~IrishNotes~";
+        public const string AppWelcomeText = "Welcome To";
+
+        public const int TopWelcome = 2;
+        public const int LeftWelcome = 30;
+        public const int ThreadSleepForWelcomeText = 500;
     }
 }

@@ -46,22 +46,22 @@
     <Compile Include="Common\App.cs" />
     <Compile Include="Common\ConsoleInfoConstants.cs" />
     <Compile Include="Common\Exceptions\GlobalErrorMessages.cs" />
+    <Compile Include="Common\Exceptions\MissingNoteException.cs" />
+    <Compile Include="Common\Interfaces\IColorable.cs" />
+    <Compile Include="Common\Interfaces\IDrowable.cs" />
+    <Compile Include="Common\Interfaces\IUser.cs" />
+    <Content Include="logo.txt" />
     <Compile Include="Common\Menu\Menu.cs" />
-    <Compile Include="Common\Menu\MenuItems.cs" />
+    <Compile Include="Common\Menu\MenuConstants.cs" />
     <Compile Include="Common\Printer.cs" />
-    <Compile Include="Common\User\Contracts\IUser.cs" />
-    <Compile Include="Common\User\Enumerations\NotesTextColorType.cs" />
-    <Compile Include="Common\User\Enumerations\NotesType.cs" />
-    <Compile Include="Common\User\Enumerations\SchoolType.cs" />
+    <Compile Include="Common\Enumerations\TextColorType.cs" />
+    <Compile Include="Common\Enumerations\NotesType.cs" />
     <Compile Include="Common\User\User.cs" />
     <Compile Include="MainIrishNotes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="logo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
