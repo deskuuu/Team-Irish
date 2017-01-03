@@ -27,6 +27,7 @@
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Username = userName;
+            this.Email = email;
         }
 
 
@@ -46,7 +47,7 @@
             {
                 if (!Validate.ValidateNameField(value))
                 {
-                    throw new InvalidNameException("");
+                    throw new InvalidNameException("The first name is not valid, please try again!");
                 }
 
                 this.firstName = value;
@@ -64,7 +65,7 @@
             {
                 if(!Validate.ValidateNameField(value))
                 {
-                    throw new InvalidNameException("");
+                    throw new InvalidNameException("The last name is not valid, please try again!");
                 }
 
                 this.lastName = value;
@@ -82,10 +83,28 @@
             {
                 if(!Validate.ValidateUsernameField(value))
                 {
-                    throw new InvalidUsernameException("");
+                    throw new InvalidUsernameException("The username is not valid, please try again!");
                 }
 
                 this.userName = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return this.email;
+            }
+
+            set
+            {
+                if(!Validate.ValidateEmailField(value))
+                {
+                    throw new InvalidEmailException("The email is not valid, please try again!");
+                }
+
+                this.email = value;
             }
         }
 
