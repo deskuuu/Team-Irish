@@ -2,7 +2,6 @@
 {
     using System;
     using System.Windows.Forms;
-    using Common.AppConstants;
 
     public partial class IrishMain : Form
     {
@@ -30,7 +29,7 @@
         {
             try
             {
-                System.Diagnostics.Process.Start(AppConstants.AboutHyperlink);
+               // System.Diagnostics.Process.Start(AppConstants.AboutHyperlink);
             }
             catch (InvalidAboutHyperLinkException msg)
             {
@@ -38,9 +37,29 @@
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label1_MouseClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void firstNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AboutClicked_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void IrishMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -3,7 +3,8 @@
   <Class Name="IrishNote.IrishMain">
     <Position X="1" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAQAAiAAABAAAACAEAACAAAAAAIABCAAAABAAgA=</HashCode>
+      <HashCode>JADAAAABCCAAAAAJACGBEAgCAAAAAAIABCAQACAAQgA=</HashCode>
+      <FileName>IrishNote.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
