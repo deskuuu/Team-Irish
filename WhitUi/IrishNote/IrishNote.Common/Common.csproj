@@ -43,6 +43,7 @@
     <Compile Include="AppConstants\AppConstants.cs" />
     <Compile Include="Exceptions\InvalidAboutHyperLinkException.cs" />
     <Compile Include="Exceptions\InvalidNameException.cs" />
+    <Compile Include="Exceptions\InvalidUsernameException.cs" />
     <Compile Include="HelperMethods\Validate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

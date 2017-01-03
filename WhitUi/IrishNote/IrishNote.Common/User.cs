@@ -25,6 +25,8 @@
         public User(string firstName, string lastName, string userName, string email, string password)
         {
             this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Username = userName;
         }
 
 
@@ -48,6 +50,42 @@
                 }
 
                 this.firstName = value;
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return this.lastName;
+            }
+
+            set
+            {
+                if(!Validate.ValidateNameField(value))
+                {
+                    throw new InvalidNameException("");
+                }
+
+                this.lastName = value;
+            }
+        }
+
+        public string Username
+        {
+            get
+            {
+                return this.userName;
+            }
+
+            set
+            {
+                if(!Validate.ValidateUsernameField(value))
+                {
+                    throw new InvalidUsernameException("");
+                }
+
+                this.userName = value;
             }
         }
 
