@@ -16,10 +16,10 @@
         {
             App.SetUpConsole();
             Printer.PrintFrame();
-           
-            IList<ConsoleColor> colors = new List<ConsoleColor> { ConsoleColor.DarkGreen, ConsoleColor.DarkYellow,ConsoleColor.DarkRed};
-            Printer.PrintWelcomeText(colors,2,10);
-           
+
+            IList<ConsoleColor> colors = new List<ConsoleColor> { ConsoleColor.DarkGreen, ConsoleColor.DarkYellow, ConsoleColor.DarkRed };
+            Printer.PrintWelcomeText(colors, 2, 10);
+
             var from = Console.CursorTop;
 
             Console.ForegroundColor = ConsoleColor.Green;

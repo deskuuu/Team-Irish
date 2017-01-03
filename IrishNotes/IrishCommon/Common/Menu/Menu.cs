@@ -30,7 +30,7 @@
         {
             var makeANewProfille = MenuConstants.MakeProfile;
             var makeNoteWithoughtProfille = MenuConstants.MakeNoteWithoughtProfille;
-            var logOn = MenuConstants.LogOn;
+            var logOn = MenuConstants.Login;
             var quit = MenuConstants.Quit;
 
             this.appMenu.Add(makeANewProfille);
