@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IrishNote.Common</RootNamespace>
-    <AssemblyName>IrishNote.Common</AssemblyName>
+    <AssemblyName>Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,17 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppConstants\AppConstants.cs" />
-    <Compile Include="Exceptions\InvalidAboutHyperLinkException.cs" />
-    <Compile Include="Exceptions\InvalidEmailException.cs" />
-    <Compile Include="Exceptions\InvalidNameException.cs" />
-    <Compile Include="Exceptions\InvalidUsernameException.cs" />
-    <Compile Include="HelperMethods\Validate.cs" />
+    <Compile Include="Constants\AppConstants.cs" />
+    <Compile Include="Contracts\IUser.cs" />
+    <Compile Include="IOFile\ReadData.cs" />
+    <Compile Include="IOFile\SaveData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Models\User.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contracts\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

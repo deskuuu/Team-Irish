@@ -34,29 +34,31 @@
         {
             System.Windows.Forms.Button btnLogin;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IrishMain));
-            this.btnSignUp = new System.Windows.Forms.Button();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.registerTxtBox = new System.Windows.Forms.RichTextBox();
             this.AboutHyperlink = new System.Windows.Forms.LinkLabel();
-            this.userNameLabel = new System.Windows.Forms.Label();
-            this.passwordLabel = new System.Windows.Forms.Label();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.haveProfilBox = new System.Windows.Forms.RichTextBox();
-            this.userameInput = new System.Windows.Forms.TextBox();
-            this.userPasswordInput = new System.Windows.Forms.TextBox();
-            this.firstNameLabel = new System.Windows.Forms.Label();
-            this.lastNameLabel = new System.Windows.Forms.Label();
-            this.emailLabel = new System.Windows.Forms.Label();
-            this.userLabel = new System.Windows.Forms.Label();
+            this.loginSignnDatas = new System.Windows.Forms.Panel();
+            this.inputPassword = new System.Windows.Forms.TextBox();
+            this.registerTxtBox = new System.Windows.Forms.RichTextBox();
+            this.inputEmail = new System.Windows.Forms.TextBox();
+            this.inputUserName = new System.Windows.Forms.TextBox();
+            this.btnSignUp = new System.Windows.Forms.Button();
+            this.inputLastName = new System.Windows.Forms.TextBox();
+            this.userNameLabel = new System.Windows.Forms.Label();
+            this.inputFirstName = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordSign = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.haveProfilBox = new System.Windows.Forms.RichTextBox();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.userameInput = new System.Windows.Forms.TextBox();
+            this.userLabel = new System.Windows.Forms.Label();
+            this.userPasswordInput = new System.Windows.Forms.TextBox();
+            this.lastNameLabel = new System.Windows.Forms.Label();
+            this.firstNameLabel = new System.Windows.Forms.Label();
             btnLogin = new System.Windows.Forms.Button();
+            this.loginSignnDatas.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -70,47 +72,15 @@
             btnLogin.Font = new System.Drawing.Font("MicroSquare", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             btnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             btnLogin.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            btnLogin.Location = new System.Drawing.Point(532, 335);
+            btnLogin.Location = new System.Drawing.Point(424, 270);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new System.Drawing.Size(136, 42);
-            btnLogin.TabIndex = 8;
+            btnLogin.TabIndex = 29;
             btnLogin.Text = "Log In";
             btnLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             btnLogin.UseMnemonic = false;
             btnLogin.UseVisualStyleBackColor = false;
-            // 
-            // btnSignUp
-            // 
-            this.btnSignUp.BackColor = System.Drawing.Color.DarkRed;
-            this.btnSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSignUp.Font = new System.Drawing.Font("MicroSquare", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignUp.Location = new System.Drawing.Point(167, 335);
-            this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(147, 42);
-            this.btnSignUp.TabIndex = 5;
-            this.btnSignUp.Text = "Sign Up";
-            this.btnSignUp.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnSignUp.UseVisualStyleBackColor = false;
-            // 
-            // registerTxtBox
-            // 
-            this.registerTxtBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.registerTxtBox.AutoWordSelection = true;
-            this.registerTxtBox.BackColor = System.Drawing.Color.SlateGray;
-            this.registerTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.registerTxtBox.BulletIndent = 1;
-            this.registerTxtBox.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.registerTxtBox.Font = new System.Drawing.Font("MicroSquare", 15.7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerTxtBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.registerTxtBox.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.registerTxtBox.Location = new System.Drawing.Point(163, 16);
-            this.registerTxtBox.MaxLength = 50;
-            this.registerTxtBox.Name = "registerTxtBox";
-            this.registerTxtBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.registerTxtBox.ShowSelectionMargin = true;
-            this.registerTxtBox.Size = new System.Drawing.Size(151, 58);
-            this.registerTxtBox.TabIndex = 12;
-            this.registerTxtBox.Text = "Register \n    for  Free:";
+            btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // AboutHyperlink
             // 
@@ -132,26 +102,7 @@
             this.AboutHyperlink.Text = "About";
             this.AboutHyperlink.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.AboutHyperlink.VisitedLinkColor = System.Drawing.SystemColors.ButtonHighlight;
-            // 
-            // userNameLabel
-            // 
-            this.userNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.userNameLabel.Location = new System.Drawing.Point(449, 216);
-            this.userNameLabel.Name = "userNameLabel";
-            this.userNameLabel.Size = new System.Drawing.Size(107, 29);
-            this.userNameLabel.TabIndex = 19;
-            this.userNameLabel.Text = "User name:";
-            this.userNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // passwordLabel
-            // 
-            this.passwordLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.passwordLabel.Location = new System.Drawing.Point(449, 264);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(107, 29);
-            this.passwordLabel.TabIndex = 20;
-            this.passwordLabel.Text = "Password:";
-            this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.AboutHyperlink.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AboutHyperlink_MouseClick);
             // 
             // richTextBox1
             // 
@@ -181,6 +132,156 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // loginSignnDatas
+            // 
+            this.loginSignnDatas.BackColor = System.Drawing.Color.Transparent;
+            this.loginSignnDatas.Controls.Add(this.inputPassword);
+            this.loginSignnDatas.Controls.Add(this.registerTxtBox);
+            this.loginSignnDatas.Controls.Add(this.inputEmail);
+            this.loginSignnDatas.Controls.Add(btnLogin);
+            this.loginSignnDatas.Controls.Add(this.inputUserName);
+            this.loginSignnDatas.Controls.Add(this.btnSignUp);
+            this.loginSignnDatas.Controls.Add(this.inputLastName);
+            this.loginSignnDatas.Controls.Add(this.userNameLabel);
+            this.loginSignnDatas.Controls.Add(this.inputFirstName);
+            this.loginSignnDatas.Controls.Add(this.passwordLabel);
+            this.loginSignnDatas.Controls.Add(this.passwordSign);
+            this.loginSignnDatas.Controls.Add(this.haveProfilBox);
+            this.loginSignnDatas.Controls.Add(this.emailLabel);
+            this.loginSignnDatas.Controls.Add(this.userameInput);
+            this.loginSignnDatas.Controls.Add(this.userLabel);
+            this.loginSignnDatas.Controls.Add(this.userPasswordInput);
+            this.loginSignnDatas.Controls.Add(this.lastNameLabel);
+            this.loginSignnDatas.Controls.Add(this.firstNameLabel);
+            this.loginSignnDatas.Location = new System.Drawing.Point(106, 74);
+            this.loginSignnDatas.Name = "loginSignnDatas";
+            this.loginSignnDatas.Size = new System.Drawing.Size(635, 380);
+            this.loginSignnDatas.TabIndex = 11;
+            // 
+            // inputPassword
+            // 
+            this.inputPassword.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.inputPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputPassword.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputPassword.ForeColor = System.Drawing.Color.DarkRed;
+            this.inputPassword.Location = new System.Drawing.Point(142, 262);
+            this.inputPassword.Name = "inputPassword";
+            this.inputPassword.Size = new System.Drawing.Size(110, 28);
+            this.inputPassword.TabIndex = 25;
+            // 
+            // registerTxtBox
+            // 
+            this.registerTxtBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.registerTxtBox.AutoWordSelection = true;
+            this.registerTxtBox.BackColor = System.Drawing.Color.SlateGray;
+            this.registerTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.registerTxtBox.BulletIndent = 1;
+            this.registerTxtBox.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.registerTxtBox.Font = new System.Drawing.Font("MicroSquare", 15.7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerTxtBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.registerTxtBox.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.registerTxtBox.Location = new System.Drawing.Point(70, 3);
+            this.registerTxtBox.MaxLength = 50;
+            this.registerTxtBox.Name = "registerTxtBox";
+            this.registerTxtBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.registerTxtBox.ShowSelectionMargin = true;
+            this.registerTxtBox.Size = new System.Drawing.Size(151, 58);
+            this.registerTxtBox.TabIndex = 30;
+            this.registerTxtBox.Text = "Register \n    for  Free:";
+            // 
+            // inputEmail
+            // 
+            this.inputEmail.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.inputEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputEmail.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputEmail.ForeColor = System.Drawing.Color.DarkRed;
+            this.inputEmail.Location = new System.Drawing.Point(142, 220);
+            this.inputEmail.Name = "inputEmail";
+            this.inputEmail.Size = new System.Drawing.Size(110, 28);
+            this.inputEmail.TabIndex = 24;
+            // 
+            // inputUserName
+            // 
+            this.inputUserName.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.inputUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputUserName.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputUserName.ForeColor = System.Drawing.Color.DarkRed;
+            this.inputUserName.Location = new System.Drawing.Point(142, 173);
+            this.inputUserName.MaxLength = 15;
+            this.inputUserName.Name = "inputUserName";
+            this.inputUserName.Size = new System.Drawing.Size(110, 28);
+            this.inputUserName.TabIndex = 23;
+            // 
+            // btnSignUp
+            // 
+            this.btnSignUp.BackColor = System.Drawing.Color.DarkRed;
+            this.btnSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSignUp.Font = new System.Drawing.Font("MicroSquare", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignUp.Location = new System.Drawing.Point(74, 322);
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.Size = new System.Drawing.Size(147, 42);
+            this.btnSignUp.TabIndex = 26;
+            this.btnSignUp.Text = "Sign Up";
+            this.btnSignUp.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnSignUp.UseVisualStyleBackColor = false;
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
+            // 
+            // inputLastName
+            // 
+            this.inputLastName.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.inputLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputLastName.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputLastName.ForeColor = System.Drawing.Color.DarkRed;
+            this.inputLastName.Location = new System.Drawing.Point(142, 125);
+            this.inputLastName.Name = "inputLastName";
+            this.inputLastName.Size = new System.Drawing.Size(110, 28);
+            this.inputLastName.TabIndex = 22;
+            // 
+            // userNameLabel
+            // 
+            this.userNameLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.userNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.userNameLabel.Location = new System.Drawing.Point(341, 151);
+            this.userNameLabel.Name = "userNameLabel";
+            this.userNameLabel.Size = new System.Drawing.Size(107, 29);
+            this.userNameLabel.TabIndex = 37;
+            this.userNameLabel.Text = "User name:";
+            this.userNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // inputFirstName
+            // 
+            this.inputFirstName.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.inputFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.inputFirstName.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inputFirstName.ForeColor = System.Drawing.Color.DarkRed;
+            this.inputFirstName.Location = new System.Drawing.Point(142, 83);
+            this.inputFirstName.MaxLength = 15;
+            this.inputFirstName.Name = "inputFirstName";
+            this.inputFirstName.Size = new System.Drawing.Size(110, 28);
+            this.inputFirstName.TabIndex = 21;
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.passwordLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.passwordLabel.Location = new System.Drawing.Point(341, 199);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(107, 29);
+            this.passwordLabel.TabIndex = 38;
+            this.passwordLabel.Text = "Password:";
+            this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // passwordSign
+            // 
+            this.passwordSign.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.passwordSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.passwordSign.Location = new System.Drawing.Point(18, 262);
+            this.passwordSign.Name = "passwordSign";
+            this.passwordSign.Size = new System.Drawing.Size(107, 29);
+            this.passwordSign.TabIndex = 35;
+            this.passwordSign.Text = "Password:";
+            this.passwordSign.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // haveProfilBox
             // 
             this.haveProfilBox.BackColor = System.Drawing.Color.SlateGray;
@@ -188,15 +289,26 @@
             this.haveProfilBox.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.haveProfilBox.Font = new System.Drawing.Font("MicroSquare", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.haveProfilBox.ForeColor = System.Drawing.SystemColors.Menu;
-            this.haveProfilBox.Location = new System.Drawing.Point(514, 137);
+            this.haveProfilBox.Location = new System.Drawing.Point(406, 72);
             this.haveProfilBox.MaxLength = 30;
             this.haveProfilBox.Name = "haveProfilBox";
             this.haveProfilBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.haveProfilBox.ShowSelectionMargin = true;
             this.haveProfilBox.Size = new System.Drawing.Size(182, 57);
-            this.haveProfilBox.TabIndex = 18;
+            this.haveProfilBox.TabIndex = 36;
             this.haveProfilBox.Tag = "";
             this.haveProfilBox.Text = "If you have already an account:";
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.emailLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.emailLabel.Location = new System.Drawing.Point(18, 220);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(107, 29);
+            this.emailLabel.TabIndex = 34;
+            this.emailLabel.Text = "Email:";
+            this.emailLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // userameInput
             // 
@@ -204,11 +316,22 @@
             this.userameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.userameInput.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userameInput.ForeColor = System.Drawing.Color.DarkRed;
-            this.userameInput.Location = new System.Drawing.Point(586, 217);
+            this.userameInput.Location = new System.Drawing.Point(478, 152);
             this.userameInput.MaxLength = 15;
             this.userameInput.Name = "userameInput";
             this.userameInput.Size = new System.Drawing.Size(110, 28);
-            this.userameInput.TabIndex = 6;
+            this.userameInput.TabIndex = 27;
+            // 
+            // userLabel
+            // 
+            this.userLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.userLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.userLabel.Location = new System.Drawing.Point(18, 172);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(107, 29);
+            this.userLabel.TabIndex = 33;
+            this.userLabel.Text = "User name:";
+            this.userLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // userPasswordInput
             // 
@@ -216,117 +339,32 @@
             this.userPasswordInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.userPasswordInput.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userPasswordInput.ForeColor = System.Drawing.Color.DarkRed;
-            this.userPasswordInput.Location = new System.Drawing.Point(586, 265);
+            this.userPasswordInput.Location = new System.Drawing.Point(478, 200);
             this.userPasswordInput.Name = "userPasswordInput";
             this.userPasswordInput.Size = new System.Drawing.Size(110, 28);
-            this.userPasswordInput.TabIndex = 7;
-            // 
-            // firstNameLabel
-            // 
-            this.firstNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.firstNameLabel.Location = new System.Drawing.Point(111, 96);
-            this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(107, 29);
-            this.firstNameLabel.TabIndex = 13;
-            this.firstNameLabel.Text = "First name:";
-            this.firstNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.userPasswordInput.TabIndex = 28;
             // 
             // lastNameLabel
             // 
+            this.lastNameLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lastNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lastNameLabel.Location = new System.Drawing.Point(111, 137);
+            this.lastNameLabel.Location = new System.Drawing.Point(18, 124);
             this.lastNameLabel.Name = "lastNameLabel";
             this.lastNameLabel.Size = new System.Drawing.Size(107, 29);
-            this.lastNameLabel.TabIndex = 14;
+            this.lastNameLabel.TabIndex = 32;
             this.lastNameLabel.Text = "Last name:";
             this.lastNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // emailLabel
+            // firstNameLabel
             // 
-            this.emailLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.emailLabel.Location = new System.Drawing.Point(111, 233);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(107, 29);
-            this.emailLabel.TabIndex = 16;
-            this.emailLabel.Text = "Email:";
-            this.emailLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // userLabel
-            // 
-            this.userLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.userLabel.Location = new System.Drawing.Point(111, 185);
-            this.userLabel.Name = "userLabel";
-            this.userLabel.Size = new System.Drawing.Size(107, 29);
-            this.userLabel.TabIndex = 15;
-            this.userLabel.Text = "User name:";
-            this.userLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // passwordSign
-            // 
-            this.passwordSign.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.passwordSign.Location = new System.Drawing.Point(111, 275);
-            this.passwordSign.Name = "passwordSign";
-            this.passwordSign.Size = new System.Drawing.Size(107, 29);
-            this.passwordSign.TabIndex = 17;
-            this.passwordSign.Text = "Password:";
-            this.passwordSign.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.DarkRed;
-            this.textBox1.Location = new System.Drawing.Point(235, 138);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 28);
-            this.textBox1.TabIndex = 1;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.DarkRed;
-            this.textBox2.Location = new System.Drawing.Point(235, 96);
-            this.textBox2.MaxLength = 15;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(110, 28);
-            this.textBox2.TabIndex = 0;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.DarkRed;
-            this.textBox3.Location = new System.Drawing.Point(235, 233);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(110, 28);
-            this.textBox3.TabIndex = 3;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.DarkRed;
-            this.textBox4.Location = new System.Drawing.Point(235, 186);
-            this.textBox4.MaxLength = 15;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(110, 28);
-            this.textBox4.TabIndex = 2;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.DarkRed;
-            this.textBox5.Location = new System.Drawing.Point(235, 285);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(110, 28);
-            this.textBox5.TabIndex = 4;
+            this.firstNameLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.firstNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.firstNameLabel.Location = new System.Drawing.Point(18, 83);
+            this.firstNameLabel.Name = "firstNameLabel";
+            this.firstNameLabel.Size = new System.Drawing.Size(107, 29);
+            this.firstNameLabel.TabIndex = 31;
+            this.firstNameLabel.Text = "First name:";
+            this.firstNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // IrishMain
             // 
@@ -337,26 +375,9 @@
             this.BackgroundImage = global::IrishNote.Properties.Resources.IrishNoteLogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(846, 466);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.passwordSign);
-            this.Controls.Add(this.emailLabel);
-            this.Controls.Add(this.userLabel);
-            this.Controls.Add(this.lastNameLabel);
-            this.Controls.Add(this.firstNameLabel);
-            this.Controls.Add(this.userPasswordInput);
-            this.Controls.Add(this.userameInput);
-            this.Controls.Add(this.haveProfilBox);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.passwordLabel);
-            this.Controls.Add(this.userNameLabel);
             this.Controls.Add(this.AboutHyperlink);
-            this.Controls.Add(this.registerTxtBox);
-            this.Controls.Add(this.btnSignUp);
-            this.Controls.Add(btnLogin);
+            this.Controls.Add(this.loginSignnDatas);
             this.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -370,36 +391,37 @@
             this.Text = "~Irish Note~";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Maroon;
-            this.Activated += new System.EventHandler(this.IrishMain_Activated);
+            this.loginSignnDatas.ResumeLayout(false);
+            this.loginSignnDatas.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
 
         #endregion
-        private Button btnSignUp;
         private PageSetupDialog pageSetupDialog1;
-        private RichTextBox registerTxtBox;
         private LinkLabel AboutHyperlink;
-        private Label userNameLabel;
-        private Label passwordLabel;
         private FontDialog fontDialog1;
         private RichTextBox richTextBox1;
         private Button btnExit;
-        private RichTextBox haveProfilBox;
-        private TextBox userameInput;
-        private TextBox userPasswordInput;
-        private Label firstNameLabel;
-        private Label emailLabel;
-        private Label userLabel;
+        private Panel loginSignnDatas;
+        private TextBox inputPassword;
+        private RichTextBox registerTxtBox;
+        private TextBox inputEmail;
+        private TextBox inputUserName;
+        private Button btnSignUp;
+        private TextBox inputLastName;
+        private Label userNameLabel;
+        private TextBox inputFirstName;
+        private Label passwordLabel;
         private Label passwordSign;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private RichTextBox haveProfilBox;
+        private Label emailLabel;
+        private TextBox userameInput;
+        private Label userLabel;
+        private TextBox userPasswordInput;
         internal Label lastNameLabel;
+        private Label firstNameLabel;
     }
 
 }
