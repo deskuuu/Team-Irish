@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\AppConstants.cs" />
+    <Compile Include="Constants\ExceptionConstants.cs" />
+    <Compile Include="Contracts\IChecker.cs" />
     <Compile Include="Contracts\IUser.cs" />
+    <Compile Include="IOFile\Checker.cs" />
     <Compile Include="IOFile\ReadData.cs" />
     <Compile Include="IOFile\SaveData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

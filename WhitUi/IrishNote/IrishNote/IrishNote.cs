@@ -1,15 +1,15 @@
 ﻿namespace IrishNote
 {
     using System;
-    using System.Windows.Forms;
     using System.IO;
-
-    using Contracts;
-    using Constants;
-    using Common.IOFile;
-    using Models;
-    using IOFile;
     using System.Text;
+    using System.Windows.Forms;
+
+    using Constants;
+    using Contracts;
+    using IOFile;
+    using Models;
+    using System.Collections.Generic;
 
     public partial class IrishMain : Form
     {
@@ -33,11 +33,11 @@
             }
             catch (FileNotFoundException)
             {
-                MessageBox.Show($"The hyperlink address \"{hyperlink}\" was not found.", "Hyperlink exception", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ExceptionConstants.NotFoundHyperlinkException + hyperlink, ExceptionConstants.HyperlinkException, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Hyperlink exception", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.ToString(), ExceptionConstants.HyperlinkException, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -50,36 +50,97 @@
         }
 
         /// <summary>
-        /// 
+        /// Create a new user, save data and redirect to the app menu.
         /// </summary>
         private void btnSignUp_Click(object sender, EventArgs e)
         {
-            var firstName = inputFirstName.Text;
-            var lastName = inputLastName.Text;
-            var userName = inputUserName.Text;
-            var email = inputEmail.Text;
-            var password = inputPassword.Text;
+            var firstName = "Desi";// inputFirstName.Text;
+            var lastName = "Manova";// inputLastName.Text;
+            var userName = "deskuuu";// inputUserName.Text;
+            var email = "des@a.bg";// inputEmail.Text;
+            var password = "hack";// inputPassword.Text;
 
-            IUser newUser = new User(lastName, userName, email, password, firstName);
+            try
+            {
+                IUser newUser = new User(lastName, userName, email, password, firstName);
 
-            SaveData.Save(newUser);
+                SaveData.Save(newUser);
 
-            loginSignnDatas.Visible = false;
+                loginSignData.Visible = false;
+                menuPanel.Visible = true;
+            }
+            catch (ArgumentException msg)
+            {
+                MessageBox.Show(msg.Message, ExceptionConstants.Caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
+            catch (FormatException msg)
+            {
+                MessageBox.Show(msg.Message, ExceptionConstants.Caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.Message, ExceptionConstants.Caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+            }
         }
 
         /// <summary>
-        /// 
+        /// Check if has that user and redirect to the app menu.
         /// </summary>
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            // Get input data.
+            var username = userameInput.Text;
+            var password = userPasswordInput.Text;
+
+            //Get all usersdata.
             var users = ReadData.GetData();
-            var st = new StringBuilder();
-            foreach (var item in users)
-            {
-                st.AppendLine(item.Key + ":" + item.Value);
-            }
-            MessageBox.Show(st.ToString(), "User data");
-            // loginSignnDatas.Visible = false;
+
+
+            //ToDo: Check if has user, connect user with his data
+            //loginSignData.Visible = false;
+            //menuPanel.Visible = true;
+        }
+
+        /// <summary>
+        /// Create custom user with default data and redirect to custom note.(Do not save custom notes!).
+        /// </summary>
+        private void btnCustomNote_Click(object sender, EventArgs e)
+        {
+            var guest = new User();
+
+            loginSignData.Visible = false;
+            displayMenuItems.Visible = true;
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEvents_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void displayMenuPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            menuPanel.Visible = false;
+            displayMenuItems.Visible = false;
+            loginSignData.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var caption = string.Empty;
+            var customText = string.Empty;
+
+            itemTitle.Text = caption;
+            textBase.Text = customText;
         }
     }
 }

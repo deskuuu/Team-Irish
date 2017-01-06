@@ -1,4 +1,4 @@
-﻿namespace Common.IOFile
+﻿namespace IrishNote.IOFile
 {
     using System.IO;
 

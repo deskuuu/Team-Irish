@@ -5,8 +5,14 @@
 
     using Constants;
 
+    /// <summary>
+    /// Read user data and return it in dictionary.
+    /// </summary>
     public static class ReadData
     {
+        private const int MaxWordsInLine = 3;
+        private const char SeparatorNames = ' ';
+
         public static IDictionary<string, string> GetData()
         {
             var data = new Dictionary<string, string>();
@@ -27,13 +33,15 @@
                     while (!(line = reader.ReadLine()).Contains(AppConstants.DataUserSeparator))
                     {
                         var userData = line.Split(AppConstants.LineSplitChar);
-                        if (userData.Length == 3)
+
+                        // Check if the user has two names, because User.ToString() return lline with GetUserFullName().
+                        if (userData.Length == MaxWordsInLine)
                         {
-                            data.Add(userData[0], userData[1] + ' ' + userData[2]);
+                            data.Add(userData[MaxWordsInLine - 3], userData[MaxWordsInLine - 2] + SeparatorNames + userData[MaxWordsInLine]);
                         }
                         else
                         {
-                            data.Add(userData[0], userData[1]);
+                            data.Add(userData[MaxWordsInLine - 3], userData[MaxWordsInLine - 2]);
                         }
                     }
                 }

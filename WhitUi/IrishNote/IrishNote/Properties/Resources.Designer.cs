@@ -63,9 +63,19 @@ namespace IrishNote.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IrishNoteLogo {
+        internal static System.Drawing.Bitmap appBackgroundHome {
             get {
-                object obj = ResourceManager.GetObject("IrishNoteLogo", resourceCulture);
+                object obj = ResourceManager.GetObject("appBackgroundHome", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menuItemBackground {
+            get {
+                object obj = ResourceManager.GetObject("menuItemBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -2,9 +2,10 @@
 {
     using System;
     using System.Text;
+    using System.Text.RegularExpressions;
 
     using Contracts;
-    using System.Text.RegularExpressions;
+    using Constants;
 
     public class User : IUser
     {
@@ -74,6 +75,9 @@
             }
         }
 
+        /// <summary>
+        /// Allows only letters.
+        /// </summary>
         public string Username
         {
             get
@@ -107,7 +111,7 @@
                 }
                 else
                 {
-                    throw new FormatException("Invalid mail.");
+                    throw new FormatException(ExceptionConstants.InvalidMailException);
                 }
             }
         }
@@ -128,7 +132,7 @@
         {
             var stb = new StringBuilder(DefaultMaxLength);
 
-            stb.AppendLine($"ID: {GenerateRandomID()}");
+            stb.AppendLine($"ID: {this.GenerateRandomID()}");
             stb.AppendLine($"User: {this.userName}");
             stb.AppendLine($"Name: {this.GetUserFullName()}");
             stb.AppendLine($"Email: {this.email}");
@@ -147,9 +151,11 @@
 
         private void ValidateName(string name)
         {
+            var excMsg = ExceptionConstants.InvalidNameException;
+
             if (String.IsNullOrEmpty(name.Trim()))
             {
-                throw new ArgumentException("Invalid name.");
+                throw new ArgumentException(excMsg);
             }
             else
             {
@@ -157,7 +163,7 @@
                 {
                     if (!char.IsLetter(letter))
                     {
-                        throw new ArgumentException("Invalid name.");
+                        throw new ArgumentException(excMsg);
                     }
                 }
             }
