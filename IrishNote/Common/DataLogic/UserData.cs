@@ -1,31 +1,30 @@
-﻿namespace Common.IOFile
+﻿namespace Common.DataLogic
 {
+    using Constants;
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
 
-    using Constants;
-
     public static class UserData
     {
-        public static void CreateData(string username, string password)
+        public static void AddUser(string username, string password)
         {
             var doc = XDocument.Load(AppConstants.UserLoginDataPath);
             doc.Document.Element(AppConstants.RootTag).Add(new XElement(
                                     new XElement(AppConstants.NodeTag,
-                                       new XElement(AppConstants.usernameTag, username),
-                                       new XElement(AppConstants.passwordTag, password))));
+                                       new XElement(AppConstants.UsernameTag, username),
+                                       new XElement(AppConstants.PasswordTag, password))));
 
             doc.Save(AppConstants.UserLoginDataPath);
         }
 
-        public static IDictionary<string, string> GetLoginData()
+        public static IDictionary<string, string> GetAllUsers()
         {
             var loginData = new Dictionary<string, string>();
             var data = XDocument.Load(AppConstants.UserLoginDataPath);
 
-            var users = data.Root.Elements().Select(x => x.Element(AppConstants.usernameTag)).ToList();
-            var passwords = data.Root.Elements().Select(x => x.Element(AppConstants.passwordTag)).ToList();
+            var users = data.Root.Elements().Select(x => x.Element(AppConstants.UsernameTag)).ToList();
+            var passwords = data.Root.Elements().Select(x => x.Element(AppConstants.PasswordTag)).ToList();
             var length = users.Count();
 
             for (int index = 0; index < length; index++)

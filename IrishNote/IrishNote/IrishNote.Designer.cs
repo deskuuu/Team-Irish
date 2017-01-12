@@ -57,6 +57,7 @@
             this.lastNameLbl = new System.Windows.Forms.Label();
             this.firstNameLbl = new System.Windows.Forms.Label();
             this.displayMenuItems = new System.Windows.Forms.Panel();
+            this.btnChangeBackColor = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.titleNoteLbl = new System.Windows.Forms.Label();
@@ -71,6 +72,8 @@
             this.welcomeUserPanel = new System.Windows.Forms.Panel();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.btnMenu = new System.Windows.Forms.Button();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.btnChangeTextColor = new System.Windows.Forms.Button();
             btnLogin = new System.Windows.Forms.Button();
             btnCustomNote = new System.Windows.Forms.Button();
             this.loginSignContainer.SuspendLayout();
@@ -412,6 +415,8 @@
             // 
             this.displayMenuItems.BackgroundImage = global::IrishNote.Properties.Resources.menuItemBackground;
             this.displayMenuItems.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.displayMenuItems.Controls.Add(this.btnChangeTextColor);
+            this.displayMenuItems.Controls.Add(this.btnChangeBackColor);
             this.displayMenuItems.Controls.Add(this.btnSave);
             this.displayMenuItems.Controls.Add(this.btnClear);
             this.displayMenuItems.Controls.Add(this.titleNoteLbl);
@@ -422,6 +427,21 @@
             this.displayMenuItems.Size = new System.Drawing.Size(849, 410);
             this.displayMenuItems.TabIndex = 39;
             this.displayMenuItems.Visible = false;
+            // 
+            // btnChangeBackColor
+            // 
+            this.btnChangeBackColor.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnChangeBackColor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChangeBackColor.Font = new System.Drawing.Font("MicroSquare", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeBackColor.Location = new System.Drawing.Point(151, 372);
+            this.btnChangeBackColor.Name = "btnChangeBackColor";
+            this.btnChangeBackColor.Size = new System.Drawing.Size(159, 34);
+            this.btnChangeBackColor.TabIndex = 10;
+            this.btnChangeBackColor.TabStop = false;
+            this.btnChangeBackColor.Text = "Background";
+            this.btnChangeBackColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnChangeBackColor.UseVisualStyleBackColor = false;
+            this.btnChangeBackColor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnChangeBackColor_MouseClick);
             // 
             // btnSave
             // 
@@ -449,7 +469,6 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseMnemonic = false;
             this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.button1_Click);
             // 
             // titleNoteLbl
             // 
@@ -587,6 +606,25 @@
             this.btnMenu.UseVisualStyleBackColor = false;
             this.btnMenu.Visible = false;
             // 
+            // colorDialog
+            // 
+            this.colorDialog.SolidColorOnly = true;
+            // 
+            // btnChangeTextColor
+            // 
+            this.btnChangeTextColor.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnChangeTextColor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChangeTextColor.Font = new System.Drawing.Font("MicroSquare", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeTextColor.Location = new System.Drawing.Point(316, 372);
+            this.btnChangeTextColor.Name = "btnChangeTextColor";
+            this.btnChangeTextColor.Size = new System.Drawing.Size(159, 34);
+            this.btnChangeTextColor.TabIndex = 11;
+            this.btnChangeTextColor.TabStop = false;
+            this.btnChangeTextColor.Text = "Text";
+            this.btnChangeTextColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnChangeTextColor.UseVisualStyleBackColor = false;
+            this.btnChangeTextColor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnChangeTextColor_MouseClick);
+            // 
             // IrishMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -595,6 +633,7 @@
             this.BackgroundImage = global::IrishNote.Properties.Resources.appBackgroundHome;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(868, 483);
+            this.Controls.Add(this.displayMenuItems);
             this.Controls.Add(this.loginSignContainer);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.menuContainer);
@@ -602,7 +641,6 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.welcomeUserPanel);
-            this.Controls.Add(this.displayMenuItems);
             this.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -664,6 +702,9 @@
         private Panel welcomeUserPanel;
         private Label welcomeLabel;
         private Button btnMenu;
+        public ColorDialog colorDialog;
+        private Button btnChangeBackColor;
+        private Button btnChangeTextColor;
     }
 
 }

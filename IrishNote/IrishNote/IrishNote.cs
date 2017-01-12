@@ -1,23 +1,11 @@
 ﻿namespace IrishNote
 {
-    using System;
-    using System.IO;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using Contracts;
-
-    using Models;
-    using System.Collections.Generic;
-    using Exceptions;
-    using System.Xml.Serialization;
-    using System.Xml.Linq;
-    using System.Linq;
-    using System.Xml;
-    using System.Data;
-    using global::Common.IOFile;
-    using global::Common.Constants;
     using Common.Constants;
+    using Common.Contracts;
+    using Common.DataLogic;
+    using Common.Models;
+    using System;
+    using System.Windows.Forms;
 
     public partial class IrishMain : Form
     {
@@ -30,31 +18,44 @@
             this.InitializeComponent();
         }
 
-        private bool CheckUserExcist(string userName, string password)
-        {
-            var data = UserData.GetLoginData();
-            var isRegistered = data.Where(x => x.Key == userName).ToList();
-
-            if (isRegistered.Count == 0)
-            {
-                return false;
-            }
-            else
-            {
-                var isCorrectData = data.Where(x => x.Value == password).ToList();
-
-                return isCorrectData.Count != 0 ? true : false;
-            }
-        }
-
         private void PrintMenuLogged(string username)
         {
-            MessageBox.Show(AppConstants.UserLogged + $" {username}", AppConstants.Logged, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(AppConstants.UserLoggedMsg + $" {username}", AppConstants.Logged, MessageBoxButtons.OK, MessageBoxIcon.Information);
             loginSignContainer.Visible = false;
             menuContainer.Visible = true;
             welcomeUserPanel.Visible = true;
-            welcomeLabel.Text = AppConstants.WelcomeBack + $" {username}";
+            welcomeLabel.Text = AppConstants.WelcomeMsg + $" {username}";
             btnMenu.Visible = true;
+        }
+
+        private void ChangeBGColor(RichTextBox container)
+        {
+            DialogResult result = colorDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                container.BackColor = colorDialog.Color;
+            }
+        }
+
+        private void ChangeBGColor(TextBox container)
+        {
+            DialogResult result = colorDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                container.BackColor = colorDialog.Color;
+            }
+        }
+
+        private void ChangeTextColor(TextBox container)
+        {
+            DialogResult result = colorDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                container.ForeColor = colorDialog.Color;
+            }
         }
 
         private bool IsLogged()
@@ -89,21 +90,21 @@
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
-            var candidateFirstName = inputFirstName.Text;
-            var candidateLastName = inputLastName.Text;
-            var candidateUserName = inputUserName.Text;
-            var candidateEmail = inputEmail.Text;
-            var candidatePassword = inputPassword.Text;
+            var candidateFirstName = "dsfds";// inputFirstName.Text;
+            var candidateLastName = "dsfds";//inputLastName.Text;
+            var candidateUserName = "ninja";//inputUserName.Text;
+            var candidateEmail = "dsfds";// inputEmail.Text;
+            var candidatePassword = "dsfds";//inputPassword.Text;
 
             var messageBoxCaption = ErrorMessagesConstants.MsgBoxCaptionUser;
 
             try
             {
-                var isRegistered = this.CheckUserExcist(candidateUserName, candidatePassword);
+                var isRegistered = DataMethods.CheckLoginData(candidateUserName);
 
                 if (isRegistered)
                 {
-                    MessageBox.Show(ErrorMessagesConstants.MsgUserExcist, messageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show(ErrorMessagesConstants.UserExcistMsg, messageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
@@ -113,15 +114,15 @@
                     this.user.Email = candidateEmail;
                     this.user.Password = candidatePassword;
 
-                    UserData.CreateData(candidateUserName, candidatePassword);
+                    UserData.AddUser(candidateUserName, candidatePassword);
                     this.PrintMenuLogged(candidateUserName);
 
                     this.isClickedSignUp = true;
                 }
             }
-            catch (ArgumentException msg)
+            catch (ArgumentException)
             {
-                MessageBox.Show(msg.Message, messageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show(ErrorMessagesConstants.UserExcistMsg, messageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             catch (FormatException msg)
             {
@@ -129,7 +130,7 @@
             }
             catch (Exception msg)
             {
-                MessageBox.Show(msg.ToString(), messageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show(msg.Message, messageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
@@ -137,16 +138,21 @@
         {
             var username = userameInput.Text;
             var password = userPasswordInput.Text;
-            var isRegistered = this.CheckUserExcist(username, password);
+            var isRegistered = DataMethods.CheckLoginData(username, password);
 
-            if (isRegistered)
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
+                MessageBox.Show(ErrorMessagesConstants.NullDataMsg, ErrorMessagesConstants.MsgBoxLoginDataCaption, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            else if(isRegistered)
+            {  
+                // ToDO: make logic btw user and his data
                 this.PrintMenuLogged(username);
                 this.isCleckedLogOn = true;
             }
             else
             {
-                MessageBox.Show(ErrorMessagesConstants.InvalidLoginData, ErrorMessagesConstants.MsgBoxLoginDataCaption, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(ErrorMessagesConstants.InvalidLoginDataMsg, ErrorMessagesConstants.MsgBoxLoginDataCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -158,19 +164,11 @@
             welcomeUserPanel.Visible = false;
 
             var logged = this.IsLogged();
+
             if (logged)
             {
                 btnMenu.Visible = true;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var caption = string.Empty;
-            var customText = string.Empty;
-
-            titleNoteContainer.Text = caption;
-            textNoteContainer.Text = customText;
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -182,6 +180,31 @@
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            var areLoggedUser = this.IsLogged();
+
+            if (!areLoggedUser)
+            {
+                MessageBox.Show(ErrorMessagesConstants.SaveWithougthUser,ErrorMessagesConstants.MsgBoxSaveCaption);
+                displayMenuItems.Visible = false;
+                loginSignContainer.Visible = true;
+            }
+            else
+            {
+                
+            }
+        }
+
+        private void btnChangeBackColor_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.ChangeBGColor(textNoteContainer);
+            this.ChangeBGColor(titleNoteContainer);
+
+        }
+
+        private void btnChangeTextColor_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.ChangeBGColor(titleNoteContainer);
+            this.ChangeBGColor(titleNoteContainer);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Contracts
+﻿namespace Common.Contracts
 {
     public interface IUser
     {

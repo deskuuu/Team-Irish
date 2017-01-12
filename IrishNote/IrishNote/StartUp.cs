@@ -3,7 +3,7 @@
     using System;
     using System.Windows.Forms;
 
-    static class Program
+    static class StartUp
     {
         /// <summary>
         /// The main entry point for the application.

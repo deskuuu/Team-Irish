@@ -1,4 +1,4 @@
-﻿namespace Exceptions
+﻿namespace Common.Exceptions
 {
     using System;
     using System.Runtime.Serialization;

@@ -46,14 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\InvalidUserException.cs" />
     <Compile Include="IrishNote.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IrishNote.Designer.cs">
       <DependentUpon>IrishNote.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="IrishNote.resx">
       <DependentUpon>IrishNote.cs</DependentUpon>
@@ -91,7 +90,9 @@
     <None Include="Resources\menuItemBackground.jpg" />
     <None Include="Resources\appBackgroundHome.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Notes\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Data\users.xml">
       <SubType>Designer</SubType>

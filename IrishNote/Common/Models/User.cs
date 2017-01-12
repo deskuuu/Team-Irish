@@ -1,30 +1,30 @@
-﻿namespace Models
+﻿namespace Common.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Text;
     using System.Text.RegularExpressions;
 
+    using Constants;
     using Contracts;
-    using Contracts;
-    using System.Collections.Generic;
-    using Common.Contracts;
 
     public class User : IUser
     {
-        public List<IEvent> eventsList;
-      //  public List<INote> notesList;
-        public List<ITask> tasksList;
+        private IList<IEvent> eventsList;
+        private IList<INote> notesList;
+        private IList<ITask> tasksList;
 
         private string firstName;
         private string lastName;
         private string userName;
         private string email;
         private string password;
-      
 
         public User()
         {
-            eventsList = new List<IEvent>();
+            this.eventsList = new List<IEvent>();
+            this.notesList = new List<INote>();
+            this.tasksList = new List<ITask>();
         }
 
         public User(string firstName, string lastName, string userName, string email, string password)
@@ -98,7 +98,7 @@
                 }
                 else
                 {
-                    throw new FormatException("Invalid e-meil format!");
+                    throw new FormatException(ErrorMessagesConstants.InvalidMeilMsg);
                 }
             }
         }
@@ -114,7 +114,7 @@
             {
                 if (value.Length < 4)
                 {
-                    throw new ArgumentOutOfRangeException("Password must be greather than 4 symbols!");
+                    throw new ArgumentOutOfRangeException(ErrorMessagesConstants.InvalidPasswordMsg);
                 }
 
                 this.password = value;
@@ -154,7 +154,7 @@
 
             if (hasError)
             {
-                throw new ArgumentException("Invalid name!");
+                throw new ArgumentException(ErrorMessagesConstants.InvalidNameFieldMsg);
             }
         }
     }

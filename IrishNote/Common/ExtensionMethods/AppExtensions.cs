@@ -1,4 +1,4 @@
-﻿namespace IrishNote.Common.ExtensionMethods
+﻿namespace Common.ExtensionMethods
 {
     using System;
 

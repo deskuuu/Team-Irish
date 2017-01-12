@@ -1,6 +1,7 @@
 ﻿namespace Common.Contracts
 {
-    public interface ITask : IBaseNote
+    public interface IEvent : IBaseNote
     {
+   
     }
 }
