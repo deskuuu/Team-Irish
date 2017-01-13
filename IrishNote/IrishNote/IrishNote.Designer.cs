@@ -57,6 +57,7 @@
             this.lastNameLbl = new System.Windows.Forms.Label();
             this.firstNameLbl = new System.Windows.Forms.Label();
             this.displayMenuItems = new System.Windows.Forms.Panel();
+            this.btnChangeTextColor = new System.Windows.Forms.Button();
             this.btnChangeBackColor = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -73,7 +74,6 @@
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.btnMenu = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.btnChangeTextColor = new System.Windows.Forms.Button();
             btnLogin = new System.Windows.Forms.Button();
             btnCustomNote = new System.Windows.Forms.Button();
             this.loginSignContainer.SuspendLayout();
@@ -111,7 +111,7 @@
             btnCustomNote.Cursor = System.Windows.Forms.Cursors.Hand;
             btnCustomNote.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
             btnCustomNote.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Purple;
-            btnCustomNote.Font = new System.Drawing.Font("MicroSquare", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            btnCustomNote.Font = new System.Drawing.Font("MicroSquare", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             btnCustomNote.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             btnCustomNote.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
             btnCustomNote.Location = new System.Drawing.Point(507, 10);
@@ -269,7 +269,7 @@
             this.btnSignUp.Text = "Sign Up";
             this.btnSignUp.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnSignUp.UseVisualStyleBackColor = false;
-            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
+            this.btnSignUp.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnSignUp_MouseClick);
             // 
             // inputLastName
             // 
@@ -386,6 +386,7 @@
             this.userPasswordInput.ForeColor = System.Drawing.Color.DarkRed;
             this.userPasswordInput.Location = new System.Drawing.Point(500, 273);
             this.userPasswordInput.Name = "userPasswordInput";
+            this.userPasswordInput.PasswordChar = '*';
             this.userPasswordInput.Size = new System.Drawing.Size(110, 28);
             this.userPasswordInput.TabIndex = 28;
             // 
@@ -428,6 +429,21 @@
             this.displayMenuItems.TabIndex = 39;
             this.displayMenuItems.Visible = false;
             // 
+            // btnChangeTextColor
+            // 
+            this.btnChangeTextColor.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnChangeTextColor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChangeTextColor.Font = new System.Drawing.Font("MicroSquare", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeTextColor.Location = new System.Drawing.Point(316, 372);
+            this.btnChangeTextColor.Name = "btnChangeTextColor";
+            this.btnChangeTextColor.Size = new System.Drawing.Size(159, 34);
+            this.btnChangeTextColor.TabIndex = 11;
+            this.btnChangeTextColor.TabStop = false;
+            this.btnChangeTextColor.Text = "Text";
+            this.btnChangeTextColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnChangeTextColor.UseVisualStyleBackColor = false;
+            this.btnChangeTextColor.Click += new System.EventHandler(this.btnChangeTextColor_Click);
+            // 
             // btnChangeBackColor
             // 
             this.btnChangeBackColor.BackColor = System.Drawing.Color.LightSteelBlue;
@@ -469,6 +485,7 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseMnemonic = false;
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // titleNoteLbl
             // 
@@ -512,7 +529,7 @@
             this.menuContainer.Controls.Add(this.btnEvents);
             this.menuContainer.Location = new System.Drawing.Point(1, -1);
             this.menuContainer.Name = "menuContainer";
-            this.menuContainer.Size = new System.Drawing.Size(117, 482);
+            this.menuContainer.Size = new System.Drawing.Size(128, 482);
             this.menuContainer.TabIndex = 41;
             this.menuContainer.Visible = false;
             // 
@@ -520,9 +537,9 @@
             // 
             this.btnCalendar.BackColor = System.Drawing.Color.DarkRed;
             this.btnCalendar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCalendar.Location = new System.Drawing.Point(6, 367);
+            this.btnCalendar.Location = new System.Drawing.Point(11, 369);
             this.btnCalendar.Name = "btnCalendar";
-            this.btnCalendar.Size = new System.Drawing.Size(103, 33);
+            this.btnCalendar.Size = new System.Drawing.Size(103, 48);
             this.btnCalendar.TabIndex = 4;
             this.btnCalendar.Text = "Calendar";
             this.btnCalendar.UseVisualStyleBackColor = false;
@@ -531,9 +548,9 @@
             // 
             this.btnNotes.BackColor = System.Drawing.Color.DarkRed;
             this.btnNotes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNotes.Location = new System.Drawing.Point(6, 167);
+            this.btnNotes.Location = new System.Drawing.Point(11, 169);
             this.btnNotes.Name = "btnNotes";
-            this.btnNotes.Size = new System.Drawing.Size(103, 33);
+            this.btnNotes.Size = new System.Drawing.Size(103, 45);
             this.btnNotes.TabIndex = 3;
             this.btnNotes.Text = "Notes";
             this.btnNotes.UseVisualStyleBackColor = false;
@@ -542,9 +559,9 @@
             // 
             this.btnTasks.BackColor = System.Drawing.Color.DarkRed;
             this.btnTasks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTasks.Location = new System.Drawing.Point(6, 231);
+            this.btnTasks.Location = new System.Drawing.Point(11, 233);
             this.btnTasks.Name = "btnTasks";
-            this.btnTasks.Size = new System.Drawing.Size(103, 33);
+            this.btnTasks.Size = new System.Drawing.Size(103, 43);
             this.btnTasks.TabIndex = 2;
             this.btnTasks.Text = "Tasks";
             this.btnTasks.UseVisualStyleBackColor = false;
@@ -564,9 +581,9 @@
             // 
             this.btnEvents.BackColor = System.Drawing.Color.DarkRed;
             this.btnEvents.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEvents.Location = new System.Drawing.Point(6, 103);
+            this.btnEvents.Location = new System.Drawing.Point(11, 105);
             this.btnEvents.Name = "btnEvents";
-            this.btnEvents.Size = new System.Drawing.Size(103, 33);
+            this.btnEvents.Size = new System.Drawing.Size(103, 44);
             this.btnEvents.TabIndex = 0;
             this.btnEvents.Text = "Events";
             this.btnEvents.UseVisualStyleBackColor = false;
@@ -577,18 +594,18 @@
             this.welcomeUserPanel.Controls.Add(this.welcomeLabel);
             this.welcomeUserPanel.Cursor = System.Windows.Forms.Cursors.Default;
             this.welcomeUserPanel.ForeColor = System.Drawing.Color.DarkRed;
-            this.welcomeUserPanel.Location = new System.Drawing.Point(150, 55);
+            this.welcomeUserPanel.Location = new System.Drawing.Point(135, 61);
             this.welcomeUserPanel.Name = "welcomeUserPanel";
-            this.welcomeUserPanel.Size = new System.Drawing.Size(645, 426);
+            this.welcomeUserPanel.Size = new System.Drawing.Size(637, 237);
             this.welcomeUserPanel.TabIndex = 39;
             this.welcomeUserPanel.Visible = false;
             // 
             // welcomeLabel
             // 
-            this.welcomeLabel.Font = new System.Drawing.Font("MicroSquare", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcomeLabel.Location = new System.Drawing.Point(140, 159);
+            this.welcomeLabel.Font = new System.Drawing.Font("MicroSquare", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLabel.Location = new System.Drawing.Point(120, 91);
             this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(280, 59);
+            this.welcomeLabel.Size = new System.Drawing.Size(304, 75);
             this.welcomeLabel.TabIndex = 0;
             // 
             // btnMenu
@@ -605,25 +622,11 @@
             this.btnMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnMenu.UseVisualStyleBackColor = false;
             this.btnMenu.Visible = false;
+            this.btnMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnMenu_MouseClick);
             // 
             // colorDialog
             // 
             this.colorDialog.SolidColorOnly = true;
-            // 
-            // btnChangeTextColor
-            // 
-            this.btnChangeTextColor.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnChangeTextColor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnChangeTextColor.Font = new System.Drawing.Font("MicroSquare", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeTextColor.Location = new System.Drawing.Point(316, 372);
-            this.btnChangeTextColor.Name = "btnChangeTextColor";
-            this.btnChangeTextColor.Size = new System.Drawing.Size(159, 34);
-            this.btnChangeTextColor.TabIndex = 11;
-            this.btnChangeTextColor.TabStop = false;
-            this.btnChangeTextColor.Text = "Text";
-            this.btnChangeTextColor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnChangeTextColor.UseVisualStyleBackColor = false;
-            this.btnChangeTextColor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnChangeTextColor_MouseClick);
             // 
             // IrishMain
             // 
@@ -633,14 +636,14 @@
             this.BackgroundImage = global::IrishNote.Properties.Resources.appBackgroundHome;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(868, 483);
-            this.Controls.Add(this.displayMenuItems);
-            this.Controls.Add(this.loginSignContainer);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.menuContainer);
             this.Controls.Add(btnCustomNote);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAbout);
             this.Controls.Add(this.welcomeUserPanel);
+            this.Controls.Add(this.loginSignContainer);
+            this.Controls.Add(this.displayMenuItems);
             this.Font = new System.Drawing.Font("MicroSquare", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -1,11 +1,14 @@
 ﻿namespace IrishNote
 {
+    using System;
+    using System.Windows.Forms;
+
     using Common.Constants;
     using Common.Contracts;
     using Common.DataLogic;
+    using Common.Exceptions;
+    using Common.ExtensionMethods;
     using Common.Models;
-    using System;
-    using System.Windows.Forms;
 
     public partial class IrishMain : Form
     {
@@ -20,41 +23,34 @@
 
         private void PrintMenuLogged(string username)
         {
-            MessageBox.Show(AppConstants.UserLoggedMsg + $" {username}", AppConstants.Logged, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var transformName = username.StartWithCapitalLetter();
+            MessageBox.Show(AppConstants.UserLoggedMsg + $" {transformName}", AppConstants.Logged, MessageBoxButtons.OK, MessageBoxIcon.Information);
             loginSignContainer.Visible = false;
             menuContainer.Visible = true;
             welcomeUserPanel.Visible = true;
-            welcomeLabel.Text = AppConstants.WelcomeMsg + $" {username}";
-            btnMenu.Visible = true;
+            welcomeLabel.Text = AppConstants.WelcomeMsg + $" {transformName}";
+            btnMenu.Visible = false;
         }
 
-        private void ChangeBGColor(RichTextBox container)
+        private void ChangeBGColor(RichTextBox container, TextBox contaner)
         {
             DialogResult result = colorDialog.ShowDialog();
 
             if (result == DialogResult.OK)
             {
                 container.BackColor = colorDialog.Color;
+                contaner.BackColor = colorDialog.Color;
             }
         }
 
-        private void ChangeBGColor(TextBox container)
-        {
-            DialogResult result = colorDialog.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                container.BackColor = colorDialog.Color;
-            }
-        }
-
-        private void ChangeTextColor(TextBox container)
+        private void ChangeTextColor(RichTextBox container, TextBox contaner)
         {
             DialogResult result = colorDialog.ShowDialog();
 
             if (result == DialogResult.OK)
             {
                 container.ForeColor = colorDialog.Color;
+                contaner.ForeColor = colorDialog.Color;
             }
         }
 
@@ -63,6 +59,15 @@
             var isLogged = this.isClickedSignUp || this.isCleckedLogOn;
 
             return isLogged;
+        }
+
+        private void ClearNewUserInputs()
+        {
+            inputFirstName.Clear();
+            inputLastName.Clear();
+            inputUserName.Clear();
+            inputEmail.Clear();
+            inputPassword.Clear();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -88,22 +93,67 @@
             }
         }
 
-        private void btnSignUp_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            var candidateFirstName = "dsfds";// inputFirstName.Text;
-            var candidateLastName = "dsfds";//inputLastName.Text;
-            var candidateUserName = "ninja";//inputUserName.Text;
-            var candidateEmail = "dsfds";// inputEmail.Text;
-            var candidatePassword = "dsfds";//inputPassword.Text;
+            var username = userameInput.Text;
+            var password = userPasswordInput.Text;
+            var isValidUsername = DataMethods.CheckLoginUsername(username);
+            var isValidPassword = DataMethods.CheckLoginData(username, password);
+
+            try
+            {
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                {
+                    throw new InvalidUserDataException();
+                }
+                else if (isValidUsername)
+                {
+                    if (!isValidPassword)
+                    {
+                        throw new InvalidPasswordException();
+
+                    }
+
+                    this.PrintMenuLogged(username);
+                    this.isCleckedLogOn = true;
+                    // ToDO: make logic btw user and his data
+                }
+                else
+                {
+                    throw new InvalidUsernameException();
+                }
+            }
+            catch (InvalidUsernameException msg)
+            {
+                MessageBox.Show(msg.Message, ErrorMessagesConstants.MsgBoxLoginDataCaption, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            catch (InvalidPasswordException msg)
+            {
+                MessageBox.Show(msg.Message, ErrorMessagesConstants.MsgBoxLoginDataCaption, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            catch (InvalidUserDataException msg)
+            {
+                MessageBox.Show(msg.Message, ErrorMessagesConstants.MsgBoxLoginDataCaption, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private void btnSignUp_MouseClick(object sender, MouseEventArgs e)
+        {
+            var candidateFirstName = inputFirstName.Text;
+            var candidateLastName = inputLastName.Text;
+            var candidateUserName = inputUserName.Text;
+            var candidateEmail = inputEmail.Text;
+            var candidatePassword = inputPassword.Text;
 
             var messageBoxCaption = ErrorMessagesConstants.MsgBoxCaptionUser;
 
             try
             {
-                var isRegistered = DataMethods.CheckLoginData(candidateUserName);
+                var isRegistered = DataMethods.CheckLoginUsername(candidateUserName);
 
                 if (isRegistered)
                 {
+                    inputUserName.Clear();
                     MessageBox.Show(ErrorMessagesConstants.UserExcistMsg, messageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
@@ -116,9 +166,10 @@
 
                     UserData.AddUser(candidateUserName, candidatePassword);
                     this.PrintMenuLogged(candidateUserName);
-
                     this.isClickedSignUp = true;
                 }
+
+                this.ClearNewUserInputs();
             }
             catch (ArgumentException)
             {
@@ -131,28 +182,6 @@
             catch (Exception msg)
             {
                 MessageBox.Show(msg.Message, messageBoxCaption, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            var username = userameInput.Text;
-            var password = userPasswordInput.Text;
-            var isRegistered = DataMethods.CheckLoginData(username, password);
-
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-            {
-                MessageBox.Show(ErrorMessagesConstants.NullDataMsg, ErrorMessagesConstants.MsgBoxLoginDataCaption, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            else if(isRegistered)
-            {  
-                // ToDO: make logic btw user and his data
-                this.PrintMenuLogged(username);
-                this.isCleckedLogOn = true;
-            }
-            else
-            {
-                MessageBox.Show(ErrorMessagesConstants.InvalidLoginDataMsg, ErrorMessagesConstants.MsgBoxLoginDataCaption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -171,40 +200,51 @@
             }
         }
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            menuContainer.Visible = false;
-            displayMenuItems.Visible = false;
-            loginSignContainer.Visible = true;
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             var areLoggedUser = this.IsLogged();
 
             if (!areLoggedUser)
             {
-                MessageBox.Show(ErrorMessagesConstants.SaveWithougthUser,ErrorMessagesConstants.MsgBoxSaveCaption);
+                MessageBox.Show(ErrorMessagesConstants.SaveWithougthUser, ErrorMessagesConstants.MsgBoxSaveCaption);
+                userameInput.Clear();
+                userPasswordInput.Clear();
                 displayMenuItems.Visible = false;
                 loginSignContainer.Visible = true;
             }
             else
             {
-                
+               //this.user.NotesList.Add(new Note("dgfg", Common.Enums.StatusType.Ongoing, DateTime.Now, "gfdgfd"));
+                SaveTxt.Save(@"../../Notes/customNotes.txt", "dsfd");
             }
         }
 
         private void btnChangeBackColor_MouseClick(object sender, MouseEventArgs e)
         {
-            this.ChangeBGColor(textNoteContainer);
-            this.ChangeBGColor(titleNoteContainer);
-
+            this.ChangeBGColor(textNoteContainer, titleNoteContainer);
         }
 
-        private void btnChangeTextColor_MouseClick(object sender, MouseEventArgs e)
+        private void btnChangeTextColor_Click(object sender, EventArgs e)
         {
-            this.ChangeBGColor(titleNoteContainer);
-            this.ChangeBGColor(titleNoteContainer);
+            this.ChangeTextColor(textNoteContainer, titleNoteContainer);
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            textNoteContainer.Clear();
+            titleNoteContainer.Clear();
+        }
+
+        private void btnMenu_MouseClick(object sender, MouseEventArgs e)
+        {
+            menuContainer.Visible = true;
+            displayMenuItems.Visible = true;
+            loginSignContainer.Visible = false;
+            welcomeUserPanel.Visible = true;
+            displayMenuItems.Visible = false;
+            btnMenu.Visible = false;
+        }
+
+      
     }
 }

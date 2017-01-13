@@ -1,12 +1,13 @@
 ﻿namespace Common.ExtensionMethods
 {
-    using System;
-
     public static class AppExtensions
     {
-        public static int WordCount(this Action<string, string, string, string, string> action)
+        public static string StartWithCapitalLetter(this string text)
         {
-            return 4;
+            var withoughtFirst = text.Substring(1, text.Length-1);
+            var newText = char.ToUpper(text[0]) + withoughtFirst;
+
+            return newText;
         }
     }
 }

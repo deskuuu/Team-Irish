@@ -46,20 +46,22 @@
     <Compile Include="Contracts\IEvent.cs" />
     <Compile Include="Contracts\INote.cs" />
     <Compile Include="Contracts\ITask.cs" />
+    <Compile Include="Exceptions\InvalidPasswordException.cs" />
+    <Compile Include="Exceptions\InvalidUserDataException.cs" />
+    <Compile Include="Exceptions\InvalidUsernameException.cs" />
     <Compile Include="Models\BaseNote.cs" />
     <Compile Include="Contracts\IUser.cs" />
     <Compile Include="Enums\StatusType.cs" />
     <Compile Include="DataLogic\DataMethods.cs" />
     <Compile Include="DataLogic\SaveTxt.cs" />
-    <Compile Include="Exceptions\InvalidUserException.cs" />
     <Compile Include="ExtensionMethods\AppExtensions.cs" />
     <Compile Include="DataLogic\UserData.cs" />
+    <Compile Include="Models\DataContainer.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\User.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

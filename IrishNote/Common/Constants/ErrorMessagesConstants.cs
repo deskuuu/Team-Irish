@@ -22,6 +22,6 @@
         public const string NullDataMsg = "Please input data!";
         public const string NullNoteMsg = "Note cannot be empty!";
 
-        public const string SaveWithougthUser = "To save your custom note, please log on or make a new registration!";
+        public const string SaveWithougthUser = "To save your custom note, please log in or make a new registration!";
     }
 }

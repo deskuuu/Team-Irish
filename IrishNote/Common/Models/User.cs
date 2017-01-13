@@ -10,9 +10,9 @@
 
     public class User : IUser
     {
-        private IList<IEvent> eventsList;
-        private IList<INote> notesList;
-        private IList<ITask> tasksList;
+        private DataContainer<IEvent> eventsList;
+        private DataContainer<INote> notesList;
+        private DataContainer<ITask> tasksList;
 
         private string firstName;
         private string lastName;
@@ -22,9 +22,9 @@
 
         public User()
         {
-            this.eventsList = new List<IEvent>();
-            this.notesList = new List<INote>();
-            this.tasksList = new List<ITask>();
+            this.eventsList = new DataContainer<IEvent>();
+            this.notesList = new DataContainer<INote>();
+            this.tasksList = new DataContainer<ITask>();
         }
 
         public User(string firstName, string lastName, string userName, string email, string password)
@@ -35,6 +35,12 @@
             this.Email = email;
             this.Password = password;
         }
+
+        public DataContainer<IEvent> EventsList => this.eventsList;
+
+        public DataContainer<INote> NotesList => this.notesList;
+
+        public DataContainer<ITask> TasksList => this.tasksList;
 
         public string FirstName
         {

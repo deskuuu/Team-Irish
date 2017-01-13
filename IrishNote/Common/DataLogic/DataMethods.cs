@@ -4,22 +4,25 @@
 
     public static class DataMethods
     {
-        public static bool CheckLoginData(string userName, string password = null)
+        public static bool CheckLoginUsername(string username)
         {
             var data = UserData.GetAllUsers();
+            var isRegistered = data.Where(x => x.Key == username).ToList().Count();
 
-            var isRegistered = data.Where(x => x.Key == userName).ToList();
+            return isRegistered != 0;
+        }
 
-            if (isRegistered.Count == 0)
+        public static bool CheckLoginData(string username, string password)
+        {
+            var isCorrectData = 0;
+
+            if (CheckLoginUsername(username))
             {
-                return false;
+                var data = UserData.GetAllUsers();
+                isCorrectData = data.Where(x => x.Value == password).ToList().Count();
             }
-            else
-            {
-                var isCorrectData = data.Where(x => x.Value == password).ToList();
 
-                return isCorrectData.Count != 0 ? true : false;
-            }
+            return isCorrectData != 0;
         }
     }
 }
