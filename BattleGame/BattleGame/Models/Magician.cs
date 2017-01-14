@@ -29,8 +29,12 @@ namespace BattleGame.Models
 
         public override string ToString()
         {
-            // TODO:
-            return base.ToString();
+            var stb = new StringBuilder();
+
+            stb.AppendLine(base.ToString());
+            stb.AppendLine($"Type Of Attak: {this.TypeOfAttack}");
+
+            return stb.ToString();
         }
     }
 }

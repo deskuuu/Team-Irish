@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleGame.Common
+﻿namespace BattleGame.Common
 {
     public static class Constants
     {
@@ -29,6 +23,5 @@ namespace BattleGame.Common
         public static int MagicianAttack = 20;
         public static int MagicianDefense = 40;
         public static int MagicianHealth = 30;
-
     }
 }

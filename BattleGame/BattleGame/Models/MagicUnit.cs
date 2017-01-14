@@ -56,5 +56,17 @@ namespace BattleGame.Models
             }
         }
 
+        public override string ToString()
+        {
+            var stb = new StringBuilder();
+
+            stb.AppendLine(base.ToString());
+            stb.AppendLine($"Attack: {this.Attack}");
+            stb.AppendLine($"Defense: {this.Defense}");
+            stb.Append($"Health: {this.Health}");
+
+            return stb.ToString();
+        }
+
     }
 }

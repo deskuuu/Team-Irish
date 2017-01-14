@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleGame.Common.Enums
+﻿namespace BattleGame.Common.Enums
 {
     public enum TypeOfAttack
     {
-        BrutalForce,
+        BrutalForce = 2,
         LongRangeAttack,
         MiddleRangeAttack,
         Magic

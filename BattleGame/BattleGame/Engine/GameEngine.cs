@@ -48,14 +48,12 @@ namespace BattleGame.Engine
             ShowPlayers(this.firstPlayer);
             ShowPlayers(this.secondPlayer);
 
-            //while (true)
-            //{
-            //    // TODO:
-            //    string currentLine = this.reder.ReadLine();
+            while (firstPlayerArmy.Count != 0 && secondPlayerArmy.Count != 0)
+            {
+                string currentLine = this.reader.ReadLine();
 
-
-            //    break;
-            //}
+                break;
+            }
         }
 
         private IList<IBattleUnit> ParseUnits()
@@ -90,7 +88,7 @@ namespace BattleGame.Engine
             if (typeOfUnit == "s")
             {
                 unit = new Swordman
-                    (name,Constants.SwordmanAttack,Constants.SwordmanDefense,Constants.SwordmanHealth);
+                    (name, Constants.SwordmanAttack, Constants.SwordmanDefense, Constants.SwordmanHealth);
             }
             else if (typeOfUnit == "a")
             {
@@ -123,8 +121,6 @@ namespace BattleGame.Engine
             {
                 this.writer.WriteLine(unit.ToString());
             }
-
-            this.writer.WriteLine();
         }
     }
 }

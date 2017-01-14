@@ -9,14 +9,14 @@ using BattleGame.Contracts;
 namespace BattleGame.Models
 {
     public class Pikeman : ForceUnit
-    {        
+    {
         TypeOfAttack typeOfAttack;
 
-        public Pikeman(string name, int attack, int defense, int health) : base(name,attack,defense,health)
+        public Pikeman(string name, int attack, int defense, int health) : base(name, attack, defense, health)
         {
-          
+
             this.typeOfAttack = TypeOfAttack.MiddleRangeAttack;
-        }        
+        }
 
         public TypeOfAttack TypeOfAttack
         {
@@ -28,8 +28,13 @@ namespace BattleGame.Models
 
         public override string ToString()
         {
-            // TODO:
-            return base.ToString();
+            var stb = new StringBuilder();
+
+            stb.AppendLine(base.ToString());
+            stb.AppendLine($"Type Of Attak: {this.TypeOfAttack}");
+
+            return stb.ToString();
+
         }
     }
 }

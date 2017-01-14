@@ -11,17 +11,17 @@ namespace BattleGame.Models
 {
     public class Archer : ForceUnit
     {
-        
+
         TypeOfAttack typeOfAttack;
 
-        public Archer(string name, int attack, int defense, int health) 
+        public Archer(string name, int attack, int defense, int health)
             : base(name, attack, defense, health)
         {
-           
+
             typeOfAttack = TypeOfAttack.LongRangeAttack;
         }
 
-       
+
 
         public TypeOfAttack TypeOfAttack
         {
@@ -33,8 +33,12 @@ namespace BattleGame.Models
 
         public override string ToString()
         {
-            // TODO:
-            return base.ToString();
+            var stb = new StringBuilder();
+
+            stb.AppendLine(base.ToString());
+            stb.AppendLine($"Type Of Attak: {this.TypeOfAttack}");
+      
+            return stb.ToString();
         }
     }
 }

@@ -32,8 +32,7 @@ namespace BattleGame.Models
 
         public override string ToString()
         {
-            // TODO:
-            return base.ToString();
+            return $"Name: {this.name}";
         }
     }
 }
