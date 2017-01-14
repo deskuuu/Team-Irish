@@ -9,56 +9,16 @@ using BattleGame.Contracts;
 namespace BattleGame.Models
 {
     public class Swordman : ForceUnit, IBattleUnit
-    {
-        private int attack;
-        private int defence;
-        private int health;
+    {       
         TypeOfAttack typeOfAttack;
 
-        public Swordman(string name) : base(name)
-        {
-            this.Attack = 20;
-            this.Defence = 20;
-            this.Health = 100;
+        public Swordman(string name,int attack, int defense, int health)
+            : base(name,attack,defense,health)
+        {           
             this.typeOfAttack = TypeOfAttack.BrutalForce;
         }
 
-        public int Attack
-        {
-            get
-            {
-                return this.attack;
-            }
-            private set
-            {
-                this.attack = value;
-            }
-        }
-
-        public int Defence
-        {
-            get
-            {
-                return this.defence;
-            }
-            private set
-            {
-                this.defence = value;
-            }
-        }
-
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-
-            set
-            {
-                this.health = value;
-            }
-        }
+       
 
         public TypeOfAttack TypeOfAttack
         {

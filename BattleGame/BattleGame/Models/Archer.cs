@@ -9,57 +9,19 @@ using BattleGame.Models;
 
 namespace BattleGame.Models
 {
-    public class Archer : ForceUnit, IBattleUnit
+    public class Archer : ForceUnit
     {
-        private int attack;
-        private int defence;
-        private int health;
+        
         TypeOfAttack typeOfAttack;
 
-        public Archer(string name) : base(name)
+        public Archer(string name, int attack, int defense, int health) 
+            : base(name, attack, defense, health)
         {
-            this.attack = 40;
-            this.defence = 20;
-            this.health = 50;
+           
             typeOfAttack = TypeOfAttack.LongRangeAttack;
         }
 
-        public int Attack
-        {
-            get
-            {
-                return this.attack;
-            }
-            private set
-            {
-                this.attack = value;
-            }
-        }
-
-        public int Defence
-        {
-            get
-            {
-                return this.defence;
-            }
-            private set
-            {
-                this.defence = value;
-            }
-        }
-
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-
-            set
-            {
-                this.health = value;
-            }
-        }
+       
 
         public TypeOfAttack TypeOfAttack
         {

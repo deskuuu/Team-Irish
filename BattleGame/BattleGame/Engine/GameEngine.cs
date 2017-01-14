@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BattleGame.Contracts;
 using BattleGame.Models;
 using BattleGame.Providers;
+using BattleGame.Common;
 
 namespace BattleGame.Engine
 {
@@ -15,7 +16,7 @@ namespace BattleGame.Engine
 
         private Player secondPlayer;
 
-        private IReader reder;
+        private IReader reader;
 
         private IWriter writer;
 
@@ -24,21 +25,21 @@ namespace BattleGame.Engine
             this.firstPlayer = new Player();
             this.secondPlayer = new Player();
 
-            this.reder = new ConsoleReader();
+            this.reader = new ConsoleReader();
             this.writer = new ConsoleWriter();
         }
 
         public void Start()
         {
             this.writer.WriteLine("Enter first player name: ");
-            string firstPlayerName = this.reder.ReadLine();
+            string firstPlayerName = this.reader.ReadLine();
             this.firstPlayer.Name = firstPlayerName;
 
             IList<IBattleUnit> firstPlayerArmy = ParseUnits();
             this.firstPlayer.Army = firstPlayerArmy;
 
             this.writer.WriteLine("Enter second player name: ");
-            string secondPlayerName = this.reder.ReadLine();
+            string secondPlayerName = this.reader.ReadLine();
             this.secondPlayer.Name = secondPlayerName;
 
             IList<IBattleUnit> secondPlayerArmy = ParseUnits();
@@ -61,9 +62,9 @@ namespace BattleGame.Engine
         {
             this.writer.WriteLine("On next three lines chose units and theirs names in format: <unit> <name>");
             this.writer.WriteLine("'s' -> swordmen  ||  'a' -> archer  ||  'p' -> pikmen  ||  'm' -> magician");
-            string firstUnitAsString = this.reder.ReadLine();
-            string secondUnitAsString = this.reder.ReadLine();
-            string thirdUnitAsString = this.reder.ReadLine();
+            string firstUnitAsString = this.reader.ReadLine();
+            string secondUnitAsString = this.reader.ReadLine();
+            string thirdUnitAsString = this.reader.ReadLine();
 
             IBattleUnit firstUnits = ParseStringToUnit(firstUnitAsString);
             IBattleUnit secondUnits = ParseStringToUnit(secondUnitAsString);
@@ -88,19 +89,23 @@ namespace BattleGame.Engine
 
             if (typeOfUnit == "s")
             {
-                unit = new Swordman(name);
+                unit = new Swordman
+                    (name,Constants.SwordmanAttack,Constants.SwordmanDefense,Constants.SwordmanHealth);
             }
             else if (typeOfUnit == "a")
             {
-                unit = new Archer(name);
+                unit = new Archer
+                     (name, Constants.ArcherAttack, Constants.ArcherDefense, Constants.ArcherHealth);
             }
             else if (typeOfUnit == "p")
             {
-                unit = new Pikman(name);
+                unit = new Pikeman
+                    (name, Constants.PikemanAttack, Constants.PikemanDefense, Constants.PikemanHealth);
             }
             else if (typeOfUnit == "m")
             {
-                unit = new Magician(name);
+                unit = new Magician
+                    (name, Constants.MagicianAttack, Constants.MagicianDefense, Constants.MagicianHealth);
             }
             else
             {

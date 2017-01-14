@@ -8,10 +8,54 @@ using BattleGame.Contracts;
 
 namespace BattleGame.Models
 {
-    public abstract class ForceUnit : Unit
+    public abstract class ForceUnit : Unit, IBattleUnit
     {
-        public ForceUnit(string name) : base(name)
+        private int attack;
+        private int defense;
+        private int health;
+
+        public ForceUnit(string name,int attack,int defense,int health) : base(name)
         {
+            this.Attack = attack;
+            this.Defense = defense;
+            this.Health = health;
         }
+        public int Attack
+        {
+            get
+            {
+                return this.attack;
+            }
+            protected set
+            {
+                this.attack = value;
+            }
+        }
+
+        public int Defense
+        {
+            get
+            {
+                return this.defense;
+            }
+            protected set
+            {
+                this.defense = value;
+            }
+        }
+
+        public int Health
+        {
+            get
+            {
+                return this.health;
+            }
+
+            protected set
+            {
+                this.health = value;
+            }
+        }
+
     }
 }

@@ -47,7 +47,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Enums\TypeOfAttack.cs" />
     <Compile Include="Contracts\IEngine.cs" />
-    <Compile Include="Contracts\BattleUnit.cs" />
+    <Compile Include="Contracts\IBattleUnit.cs" />
     <Compile Include="Contracts\IPlayer.cs" />
     <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IUnit.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="Models\ForceUnit.cs" />
     <Compile Include="Models\Magician.cs" />
     <Compile Include="Models\MagicUnit.cs" />
-    <Compile Include="Models\Pikman.cs" />
+    <Compile Include="Models\Pikeman.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Swordman.cs" />
     <Compile Include="Models\Unit.cs" />

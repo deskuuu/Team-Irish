@@ -8,58 +8,17 @@ using BattleGame.Contracts;
 
 namespace BattleGame.Models
 {
-    public class Magician : MagicUnit, IBattleUnit
+    public class Magician : MagicUnit
     {
-        private int attack;
-        private int defence;
-        private int health;
+        
         TypeOfAttack typeOfAttack;
 
-        public Magician(string name) : base(name)
+        public Magician(string name,int attack, int defense,int health) : base(name,attack,defense,health)
         {
-            this.Attack = 40;
-            this.Defence = 10;
-            this.Health = 80;
+            
             this.typeOfAttack = TypeOfAttack.Magic;
         }
-
-        public int Attack
-        {
-            get
-            {
-                return this.attack;
-            }
-            private set
-            {
-                this.attack = value;
-            }
-        }
-
-        public int Defence
-        {
-            get
-            {
-                return this.defence;
-            }
-            private set
-            {
-                this.defence = value;
-            }
-        }
-
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-
-            set
-            {
-                this.health = value;
-            }
-        }
-
+       
         public TypeOfAttack TypeOfAttack
         {
             get
