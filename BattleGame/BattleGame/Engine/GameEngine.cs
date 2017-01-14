@@ -102,6 +102,19 @@
                 // change turn
                 isFirstPlayerTurn = !isFirstPlayerTurn;
             }
+
+            if (this.firstPlayer.Army.Count == 0)
+            {
+                this.writer.WriteLine(Constants.SecondPlayerWinMessage);
+                this.writer.WriteLineInGreen(Constants.SecondPlayerWinMessage);
+                this.writer.WriteLineInRed(Constants.SecondPlayerWinMessage);
+            }
+            else
+            {
+                this.writer.WriteLine(Constants.FirstPlayerWinMessage);
+                this.writer.WriteLineInGreen(Constants.FirstPlayerWinMessage);
+                this.writer.WriteLineInRed(Constants.FirstPlayerWinMessage);
+            }
         }
 
         private void ShowPlayer(IPlayer player)

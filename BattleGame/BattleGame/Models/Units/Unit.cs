@@ -57,8 +57,6 @@
 
             set
             {
-                this.Validator(value);
-
                 this.health = value;
             }
         }

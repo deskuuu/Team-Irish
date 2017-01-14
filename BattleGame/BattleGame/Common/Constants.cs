@@ -19,6 +19,9 @@
 
         // Battle messages
         public const string UnitIsDead = "The unit is dead!";
+        public const string FirstPlayerWinMessage = "**** FIRST PLAYER WIN ****";
+        public const string SecondPlayerWinMessage = "**** SECOND PLAYER WIN ****";
+
 
         // Turn messages
         public const string FirstPlayerTurnMessage = "FIRST PLAYER TURN...";
