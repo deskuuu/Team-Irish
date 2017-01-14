@@ -4,14 +4,20 @@
 
     public class InvalidUnitException : ApplicationException
     {
-        private const string Message = Constants.InvalidUnitException;
-
-        public InvalidUnitException() : base(Message)
+        public InvalidUnitException() : base()
         {
         }
 
         public InvalidUnitException(string message) : base(message)
         {
+        }
+
+        public override string Message
+        {
+            get
+            {
+                return Constants.InvalidUnitException;
+            }
         }
     }
 }

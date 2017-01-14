@@ -16,7 +16,13 @@
 
         public const string AttackResultSuccesMessage = "Attack was successful!";
         public const string AttackResultUnsuccesMessage = "Attack was unsuccessful!";
-        
+
+        public const string NameMessage = "Name:";
+        public const string AttackMessage = "Attack:";
+        public const string DefenseMessage = "Defense: ";
+        public const string HealthMessage = "Health: ";
+        public const string AttackTypeMessage = "Type of attack:";
+
         //Swordman stats
         public const int SwordmanAttack = 20;
         public const int SwordmanDefense = 40;
