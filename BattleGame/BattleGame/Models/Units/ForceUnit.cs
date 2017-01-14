@@ -2,6 +2,7 @@
 {
     using System.Text;
 
+    using Common;
     using Common.Enums;
     using Contracts;
 
@@ -15,27 +16,16 @@
             this.AttackType = attackType;
         }
 
+        public TypeOfAttack AttackType { get; set; }
+
         public override string Print()
         {
             var stb = new StringBuilder();
 
             stb.Append(base.Print());
-            stb.AppendLine($"Type of attack: {this.AttackType}");
+            stb.AppendLine($"{Constants.AttackTypeMessage} {this.AttackType}");
 
             return stb.ToString();
-        }
-
-        public TypeOfAttack AttackType
-        {
-            get
-            {
-                return this.attackType;
-            }
-
-            set
-            {
-                this.attackType = value;
-            }
         }
     }
 }

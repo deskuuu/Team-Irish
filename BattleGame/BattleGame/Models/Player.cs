@@ -1,63 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleGame.Common;
-using BattleGame.Contracts;
-
-namespace BattleGame.Models
+﻿namespace BattleGame.Models
 {
-    public class Player : IPlayer
+    using System.Collections.Generic;
+
+    using Common;
+    using Contracts;
+    using Units;
+
+    public class Player : BaseUnit, IPlayer
     {
-        private string name;
-        private IList<IBattleUnit> army;
-        private int points;
+        public IList<IBattleUnit> Army { get; set; }
 
-        public Player()
+        public int Points { get; set; }
+
+        public Player(string name = Constants.DefaultPlayerName) : base(name)
         {
-            this.Name = Constants.DefaultPlayerName;
-            this.army = new List<IBattleUnit>();
-            this.points = Constants.DefaultPlayerPoints;
-        }
-
-        public IList<IBattleUnit> Army
-        {
-            get
-            {
-                return this.army;
-            }
-
-            set
-            {
-                this.army = value;
-            }
-        }
-
-        public int Points
-        {
-            get
-            {
-                return this.points;
-            }
-
-            set
-            {
-                this.points = value;
-            }
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                this.name = value;
-            }
+            this.Army = new List<IBattleUnit>();
+            this.Points = Constants.DefaultPlayerPoints;
         }
 
         public void AddUnit(IBattleUnit unitForAdd)

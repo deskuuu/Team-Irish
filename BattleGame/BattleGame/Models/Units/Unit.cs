@@ -4,39 +4,18 @@
     using System.Text;
 
     using Common;
-    using Contracts;
 
-    public abstract class Unit : IUnit
+    public abstract class Unit : BaseUnit
     {
-        private string name;
         private int attack;
         private int defense;
         private int health;
 
-        public Unit(string name)
+        public Unit(string name) : base(name)
         {
-            this.Name = name;
             this.Attack = attack;
             this.Defense = defense;
             this.Health = health;
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException(Constants.InvalidName);
-                }
-
-                this.name = value;
-            }
         }
 
         public int Attack
@@ -88,10 +67,10 @@
         {
             var stb = new StringBuilder();
 
-            stb.AppendLine($"Name: {this.Name}");
-            stb.AppendLine($"Attack: {this.Attack}");
-            stb.AppendLine($"Defense: {this.Defense}");
-            stb.AppendLine($"Health: {this.Health}");
+            stb.AppendLine($"{Constants.NameMessage} {this.Name}");
+            stb.AppendLine($"{Constants.AttackMessage} {this.Attack}");
+            stb.AppendLine($"{Constants.DefenseMessage} {this.Defense}");
+            stb.AppendLine($"{Constants.HealthMessage} {this.Health}");
 
             return stb.ToString();
         }
