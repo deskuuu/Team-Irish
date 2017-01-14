@@ -13,5 +13,7 @@
         void WriteLineInYellow(string message);
 
         void WriteLineInGreen(string message);
+
+        void WriteLineInRed(string message);
     }
 }

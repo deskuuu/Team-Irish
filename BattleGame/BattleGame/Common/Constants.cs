@@ -17,6 +17,13 @@
         public const string AttackResultSuccesMessage = "Attack was successful!";
         public const string AttackResultUnsuccesMessage = "Attack was unsuccessful!";
 
+        // Battle messages
+        public const string UnitIsDead = "The unit is dead!";
+
+        // Turn messages
+        public const string FirstPlayerTurnMessage = "FIRST PLAYER TURN...";
+        public const string SecondPlayerTurnMessage = "SECOND PLAYER TURN...";
+
         public const string NameMessage = "Name:";
         public const string AttackMessage = "Attack:";
         public const string DefenseMessage = "Defense: ";

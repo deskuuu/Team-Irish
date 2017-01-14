@@ -39,5 +39,12 @@
             Console.WriteLine(message);
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        public void WriteLineInRed(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
