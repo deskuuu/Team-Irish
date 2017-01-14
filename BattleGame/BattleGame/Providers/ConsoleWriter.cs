@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleGame.Contracts;
-
-namespace BattleGame.Providers
+﻿namespace BattleGame.Providers
 {
+    using System;
+
+    using Contracts;
+
     public class ConsoleWriter : IWriter
     {
         public void Write()

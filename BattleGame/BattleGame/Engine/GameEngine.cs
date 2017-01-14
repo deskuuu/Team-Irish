@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleGame.Contracts;
-using BattleGame.Models;
-using BattleGame.Providers;
-using BattleGame.Common;
-
-namespace BattleGame.Engine
+﻿namespace BattleGame.Engine
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Common;
+    using Common.Exceptions;
+    using Contracts;
+    using Models;
+    using Providers;
+
     public sealed class GameEngine : IEngine
     {
-        private Player firstPlayer;
-
-        private Player secondPlayer;
-
+        private IPlayer firstPlayer;
+        private IPlayer secondPlayer;
         private IReader reader;
-
         private IWriter writer;
 
         public GameEngine()
@@ -31,38 +27,43 @@ namespace BattleGame.Engine
 
         public void Start()
         {
-            this.writer.WriteLine("Enter first player name: ");
+            // First player
+            this.writer.WriteLine(Constants.FirstPlayerMessage);
             string firstPlayerName = this.reader.ReadLine();
             this.firstPlayer.Name = firstPlayerName;
 
-            IList<IBattleUnit> firstPlayerArmy = ParseUnits();
+            IList<IBattleUnit> firstPlayerArmy = this.ParseUnits();
             this.firstPlayer.Army = firstPlayerArmy;
 
-            this.writer.WriteLine("Enter second player name: ");
-            string secondPlayerName = this.reader.ReadLine();
-            this.secondPlayer.Name = secondPlayerName;
+            // Second player
+            //this.writer.WriteLine(Constants.SecondPlayerMessage);
+            //string secondPlayerName = this.reader.ReadLine();
+            //this.secondPlayer.Name = secondPlayerName;
 
-            IList<IBattleUnit> secondPlayerArmy = ParseUnits();
-            this.secondPlayer.Army = secondPlayerArmy;
+            //IList<IBattleUnit> secondPlayerArmy = ParseUnits();
+            //this.secondPlayer.Army = secondPlayerArmy;
 
-            ShowPlayers(this.firstPlayer);
-            ShowPlayers(this.secondPlayer);
+            ShowPlayer(this.firstPlayer);
+           // ShowPlayer(this.secondPlayer);
 
-            while (firstPlayerArmy.Count != 0 && secondPlayerArmy.Count != 0)
-            {
-                string currentLine = this.reader.ReadLine();
+            // Game cycle 
 
-                break;
-            }
+            //while (firstPlayerArmy.Count != 0 && secondPlayerArmy.Count != 0)
+            //{
+            //    string currentLine = this.reader.ReadLine();
+
+            //    break;
+            //}
         }
 
         private IList<IBattleUnit> ParseUnits()
         {
-            this.writer.WriteLine("On next three lines chose units and theirs names in format: <unit> <name>");
-            this.writer.WriteLine("'s' -> swordmen  ||  'a' -> archer  ||  'p' -> pikmen  ||  'm' -> magician");
-            string firstUnitAsString = this.reader.ReadLine();
-            string secondUnitAsString = this.reader.ReadLine();
-            string thirdUnitAsString = this.reader.ReadLine();
+            this.writer.WriteLine(Constants.ChooseUnitsMessage);
+            this.writer.WriteLine(Constants.UnitsInformationMessage);
+
+            var firstUnitAsString = this.reader.ReadLine();
+            var secondUnitAsString = this.reader.ReadLine();
+            var thirdUnitAsString = this.reader.ReadLine();
 
             IBattleUnit firstUnits = ParseStringToUnit(firstUnitAsString);
             IBattleUnit secondUnits = ParseStringToUnit(secondUnitAsString);
@@ -78,48 +79,36 @@ namespace BattleGame.Engine
 
         private IBattleUnit ParseStringToUnit(string unitAsString)
         {
-            string[] parts = unitAsString.Split(' ');
+            var parts = unitAsString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
 
-            string typeOfUnit = parts[0];
-            string name = parts[1];
-
+            var typeOfUnit = parts[0].ToLower();
+            var name = parts[1];
             IBattleUnit unit = null;
 
-            if (typeOfUnit == "s")
+            switch (typeOfUnit)
             {
-                unit = new Swordman
-                    (name, Constants.SwordmanAttack, Constants.SwordmanDefense, Constants.SwordmanHealth);
+                case "a": unit = new Archer(name); break;
+                case "s": unit = new Swordman(name); break;
+                case "m": unit = new Magician(name); break;
+                case "p": unit = new Pikeman(name); break;
+                default: unit = null; break;
             }
-            else if (typeOfUnit == "a")
+
+            if (unit == null)
             {
-                unit = new Archer
-                     (name, Constants.ArcherAttack, Constants.ArcherDefense, Constants.ArcherHealth);
-            }
-            else if (typeOfUnit == "p")
-            {
-                unit = new Pikeman
-                    (name, Constants.PikemanAttack, Constants.PikemanDefense, Constants.PikemanHealth);
-            }
-            else if (typeOfUnit == "m")
-            {
-                unit = new Magician
-                    (name, Constants.MagicianAttack, Constants.MagicianDefense, Constants.MagicianHealth);
-            }
-            else
-            {
-                throw new ArgumentException("Invalid unit type!");
+                throw new InvalidUnitException();
             }
 
             return unit;
         }
 
-        private void ShowPlayers(IPlayer player)
+        private void ShowPlayer(IPlayer player)
         {
             this.writer.WriteLine(player.Name);
 
             foreach (var unit in player.Army)
             {
-                this.writer.WriteLine(unit.ToString());
+                this.writer.WriteLine(unit.Print());
             }
         }
     }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleGame.Contracts;
-
-namespace BattleGame.Common
+﻿namespace BattleGame.Common
 {
+    using System;
+
+    using Contracts;
+
     public class BattleManager : IBattle
     {
         public void Battle(IBattleUnit playerOneUnit, IBattleUnit playerTwoUnit)

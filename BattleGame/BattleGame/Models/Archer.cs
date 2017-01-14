@@ -1,44 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleGame.Common.Enums;
-using BattleGame.Contracts;
-using BattleGame.Models;
-
-namespace BattleGame.Models
+﻿namespace BattleGame.Models
 {
+    using Common;
+    using Common.Enums;
+    using Units;
+
     public class Archer : ForceUnit
     {
-
-        TypeOfAttack typeOfAttack;
-
-        public Archer(string name, int attack, int defense, int health)
-            : base(name, attack, defense, health)
+        public Archer(string name) : base(name)
         {
-
-            typeOfAttack = TypeOfAttack.LongRangeAttack;
+            this.Attack = Constants.ArcherAttack;
+            this.Defense = Constants.ArcherDefense;
+            this.Health = Constants.ArcherHealth;
+            this.AttackType = TypeOfAttack.BrutalForce;
         }
 
-
-
-        public TypeOfAttack TypeOfAttack
+        public override string Print()
         {
-            get
-            {
-                return this.typeOfAttack;
-            }
-        }
-
-        public override string ToString()
-        {
-            var stb = new StringBuilder();
-
-            stb.AppendLine(base.ToString());
-            stb.AppendLine($"Type Of Attak: {this.TypeOfAttack}");
-      
-            return stb.ToString();
+            return base.Print();
         }
     }
 }

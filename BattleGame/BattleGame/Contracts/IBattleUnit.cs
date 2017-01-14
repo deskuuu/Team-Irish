@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleGame.Common.Enums;
-
-namespace BattleGame.Contracts
+﻿namespace BattleGame.Contracts
 {
-    public interface IBattleUnit
+    public interface IBattleUnit : IUnit
     {
-        int Health { get; set}
+        new int Attack { get; }
 
-        int Attack { get; }
+        new int Defense { get; }
 
-        int Defense { get; }
-
+        int Health { get; set; }
     }
 }

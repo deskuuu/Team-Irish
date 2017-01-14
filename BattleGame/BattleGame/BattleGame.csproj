@@ -44,24 +44,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BattleManager.cs" />
+    <Compile Include="Common\Exceptions\InvalidUnitException.cs" />
     <Compile Include="Contracts\IBattle.cs" />
+    <Compile Include="Contracts\IBattleUnit.cs" />
+    <Compile Include="Contracts\IForceUnit.cs" />
     <Compile Include="Models\Archer.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Enums\TypeOfAttack.cs" />
     <Compile Include="Contracts\IEngine.cs" />
-    <Compile Include="Contracts\IBattleUnit.cs" />
     <Compile Include="Contracts\IPlayer.cs" />
     <Compile Include="Contracts\IReader.cs" />
     <Compile Include="Contracts\IUnit.cs" />
     <Compile Include="Contracts\IWriter.cs" />
     <Compile Include="Engine\GameEngine.cs" />
-    <Compile Include="Models\ForceUnit.cs" />
+    <Compile Include="Models\Units\ForceUnit.cs" />
     <Compile Include="Models\Magician.cs" />
-    <Compile Include="Models\MagicUnit.cs" />
+    <Compile Include="Models\Units\MagicUnit.cs" />
     <Compile Include="Models\Pikeman.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Swordman.cs" />
-    <Compile Include="Models\Unit.cs" />
+    <Compile Include="Models\Units\Unit.cs" />
     <Compile Include="Providers\ConsoleReader.cs" />
     <Compile Include="Providers\ConsoleWriter.cs" />
     <Compile Include="Startup.cs" />

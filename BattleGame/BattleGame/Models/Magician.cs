@@ -1,40 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleGame.Common.Enums;
-using BattleGame.Contracts;
-
-namespace BattleGame.Models
+﻿namespace BattleGame.Models
 {
+    using Common;
+    using Common.Enums;
+    using Units;
+
     public class Magician : MagicUnit
     {
-        
-        TypeOfAttack typeOfAttack;
-
-        public Magician(string name,int attack, int defense,int health) : base(name,attack,defense,health)
+        public Magician(string name) : base(name)
         {
-            
-            this.typeOfAttack = TypeOfAttack.Magic;
-        }
-       
-        public TypeOfAttack TypeOfAttack
-        {
-            get
-            {
-                return this.typeOfAttack;
-            }
+            this.Attack = Constants.MagicianAttack;
+            this.Defense = Constants.MagicianDefense;
+            this.Health = Constants.MagicianHealth;
+            this.AttackType = TypeOfAttack.Magic;
         }
 
-        public override string ToString()
+        public override string Print()
         {
-            var stb = new StringBuilder();
-
-            stb.AppendLine(base.ToString());
-            stb.AppendLine($"Type Of Attak: {this.TypeOfAttack}");
-
-            return stb.ToString();
+            return base.Print();
         }
     }
 }

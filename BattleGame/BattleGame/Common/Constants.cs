@@ -1,27 +1,36 @@
 ﻿namespace BattleGame.Common
 {
-    public static class Constants
+    public sealed class Constants
     {
-        public static string DefaultPlayerName = "Player";
+        public const string DefaultPlayerName = "Player";
+        public const string FirstPlayerMessage = "Enter first player name: ";
+        public const string SecondPlayerMessage = "Enter second player name: ";
+        public const string ChooseUnitsMessage = "On next lines chose three units and give them names in format: <unit> <name>";
+        public const string UnitsInformationMessage = "'s' -> swordmen  ||  'a' -> archer  ||  'p' -> pikmen  ||  'm' -> magician";
+        public const string InvalidName = "Invalid name";
+        public const int MinValue = 0;
+        public const string InvalidValueMessage = "This value must be greather than 0!";
+        public const string InvalidUnitException = "Invalid unit!";
+        public const int DefaultPlayerPoints = 0;
 
         //Swordman stats
-        public static int SwordmanAttack = 20;
-        public static int SwordmanDefense = 40;
-        public static int SwordmanHealth = 30;
+        public const int SwordmanAttack = 20;
+        public const int SwordmanDefense = 40;
+        public const int SwordmanHealth = 30;
 
         //Archer stats
-        public static int ArcherAttack = 20;
-        public static int ArcherDefense = 40;
-        public static int ArcherHealth = 30;
+        public const int ArcherAttack = 22;
+        public const int ArcherDefense = 44;
+        public const int ArcherHealth = 35;
 
         //Pikeman stats
-        public static int PikemanAttack = 20;
-        public static int PikemanDefense = 40;
-        public static int PikemanHealth = 30;
+        public const int PikemanAttack = 25;
+        public const int PikemanDefense = 41;
+        public const int PikemanHealth = 32;
 
         //Magician stats
-        public static int MagicianAttack = 20;
-        public static int MagicianDefense = 40;
-        public static int MagicianHealth = 30;
+        public const int MagicianAttack = 27;
+        public const int MagicianDefense = 50;
+        public const int MagicianHealth = 45;
     }
 }

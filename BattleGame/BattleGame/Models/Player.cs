@@ -11,18 +11,14 @@ namespace BattleGame.Models
     public class Player : IPlayer
     {
         private string name;
-
         private IList<IBattleUnit> army;
-
         private int points;
 
         public Player()
         {
-            this.name = Constants.DefaultPlayerName;
-
+            this.Name = Constants.DefaultPlayerName;
             this.army = new List<IBattleUnit>();
-            
-            this.points = 0;
+            this.points = Constants.DefaultPlayerPoints;
         }
 
         public IList<IBattleUnit> Army
