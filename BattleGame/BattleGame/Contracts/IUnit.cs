@@ -1,9 +1,7 @@
 ﻿namespace BattleGame.Contracts
 {
-    public interface IUnit
+    public interface IUnit : IBaseUnit
     {
-        string Name { get; set; }
-
         int Attack { get; set; }
 
         int Defense { get; set; }

@@ -2,6 +2,7 @@
 {
     using System.Text;
 
+    using Common;
     using Common.Enums;
     using Contracts;
 
@@ -15,6 +16,8 @@
             this.AttackType = attackType;
         }
 
+        public TypeOfAttack AttackType { get; set; }
+
         public override string Print()
         {
             var stb = new StringBuilder();
@@ -23,19 +26,6 @@
             stb.AppendLine($"Chance for success attack: 1/{(int)this.AttackType}");
 
             return stb.ToString();
-        }
-
-        public TypeOfAttack AttackType
-        {
-            get
-            {
-                return this.attackType;
-            }
-
-            set
-            {
-                this.attackType = value;
-            }
         }
     }
 }

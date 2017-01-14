@@ -2,10 +2,8 @@
 {
     using System.Collections.Generic;
 
-    public interface IPlayer
+    public interface IPlayer : IBaseUnit
     {
-        string Name { get; set; }
-
         IList<IBattleUnit> Army { get; set; }
 
         int Points { get; set; }

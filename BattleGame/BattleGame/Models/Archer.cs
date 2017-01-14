@@ -2,7 +2,6 @@
 {
     using Common;
     using Common.Enums;
-    using Contracts;
     using Units;
 
     public class Archer : ForceUnit
