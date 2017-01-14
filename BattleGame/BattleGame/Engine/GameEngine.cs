@@ -6,6 +6,7 @@
     using Common;
     using Common.Exceptions;
     using Contracts;
+    using Factories;
     using Models;
     using Providers;
 
@@ -87,10 +88,10 @@
 
             switch (typeOfUnit)
             {
-                case "a": unit = new Archer(name); break;
-                case "s": unit = new Swordman(name); break;
-                case "m": unit = new Magician(name); break;
-                case "p": unit = new Pikeman(name); break;
+                case "a": unit = UnitFactory.CreateArcher(name); break;
+                case "s": unit = UnitFactory.CreateSwordman(name); break;
+                case "m": unit = UnitFactory.CreateMagician(name); break;
+                case "p": unit = UnitFactory.CreatePikeman(name); break;
                 default: unit = null; break;
             }
 

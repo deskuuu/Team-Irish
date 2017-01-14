@@ -48,6 +48,7 @@
     <Compile Include="Contracts\IBattle.cs" />
     <Compile Include="Contracts\IBattleUnit.cs" />
     <Compile Include="Contracts\IForceUnit.cs" />
+    <Compile Include="Factories\UnitFactory.cs" />
     <Compile Include="Models\Archer.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Enums\TypeOfAttack.cs" />
@@ -73,9 +74,7 @@
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
