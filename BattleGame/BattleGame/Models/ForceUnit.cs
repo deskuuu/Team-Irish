@@ -51,7 +51,7 @@ namespace BattleGame.Models
                 return this.health;
             }
 
-            protected set
+            set
             {
                 this.health = value;
             }

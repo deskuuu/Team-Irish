@@ -9,7 +9,7 @@ namespace BattleGame.Contracts
 {
     public interface IBattleUnit
     {
-        int Health { get; }
+        int Health { get; set}
 
         int Attack { get; }
 
