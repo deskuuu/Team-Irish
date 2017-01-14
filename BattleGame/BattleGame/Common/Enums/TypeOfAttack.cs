@@ -2,9 +2,9 @@
 {
     public enum TypeOfAttack
     {
-        BrutalForce,
-        LongRangeAttack,
-        MiddleRangeAttack,
-        Magic
+        BrutalForce = 3,
+        LongRangeAttack = 4,
+        MiddleRangeAttack = 5,
+        Magic = 6
     }
 }

@@ -14,6 +14,9 @@
         public const string InvalidUnitException = "Invalid unit!";
         public const int DefaultPlayerPoints = 0;
 
+        public const string AttackResultSuccesMessage = "Attack was successful!";
+        public const string AttackResultUnsuccesMessage = "Attack was unsuccessful!";
+        
         //Swordman stats
         public const int SwordmanAttack = 20;
         public const int SwordmanDefense = 40;

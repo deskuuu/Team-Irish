@@ -6,18 +6,19 @@
 
     public class BattleManager : IBattle
     {
-        public void Battle(IBattleUnit playerOneUnit, IBattleUnit playerTwoUnit)
+        public void Battle(IBattleUnit attackUnit, IBattleUnit defenceUnit)
         {
             Random successfulHit = new Random();
-            int hitResult = successfulHit.Next(0, 2);
-            if (hitResult == 0)
+            int hitResult = successfulHit.Next(1, (int)attackUnit.AttackType);
+
+            if (hitResult == 1)
             {
-                Console.WriteLine("Attack was unsuccessful!");
+                Console.WriteLine(Constants.AttackResultUnsuccesMessage);
             }
             else
             {
-                playerTwoUnit.Health -= playerOneUnit.Attack;
-                Console.WriteLine("Attack was successful!");
+                defenceUnit.Health -= attackUnit.Attack;
+                Console.WriteLine(Constants.AttackResultSuccesMessage);
             }
         }
     }

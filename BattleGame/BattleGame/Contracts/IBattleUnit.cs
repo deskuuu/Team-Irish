@@ -1,6 +1,6 @@
 ﻿namespace BattleGame.Contracts
 {
-    public interface IBattleUnit : IUnit
+    public interface IBattleUnit : IUnit, IAttackingUnit
     {
         new int Attack { get; }
 
