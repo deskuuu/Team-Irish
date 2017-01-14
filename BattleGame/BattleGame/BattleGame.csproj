@@ -49,6 +49,7 @@
     <Compile Include="Contracts\IBattle.cs" />
     <Compile Include="Contracts\IBattleUnit.cs" />
     <Compile Include="Contracts\IForceUnit.cs" />
+    <Compile Include="Contracts\IUnitParser.cs" />
     <Compile Include="Factories\PlayerFactory.cs" />
     <Compile Include="Factories\UnitFactory.cs" />
     <Compile Include="Models\Archer.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Swordman.cs" />
     <Compile Include="Models\Units\Unit.cs" />
+    <Compile Include="Parsers\UnitParser.cs" />
     <Compile Include="Providers\ConsoleReader.cs" />
     <Compile Include="Providers\ConsoleWriter.cs" />
     <Compile Include="Startup.cs" />

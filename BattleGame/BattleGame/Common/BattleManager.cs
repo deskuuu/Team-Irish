@@ -4,7 +4,7 @@
 
     using Contracts;
 
-    public class BattleManager : IBattle
+    public class BattleManager : IBattleManager
     {
         public void Battle(IBattleUnit attackUnit, IBattleUnit defenceUnit)
         {

@@ -1,6 +1,6 @@
 ﻿namespace BattleGame.Contracts
 {
-    public interface IBattle
+    public interface IBattleManager
     {
         void Battle(IBattleUnit playerOneUnit, IBattleUnit playerTwoUnit);
     }
