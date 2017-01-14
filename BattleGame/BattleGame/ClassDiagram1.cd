@@ -11,7 +11,7 @@
   <Class Name="BattleGame.Common.Constants" Collapsed="true">
     <Position X="17.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAIAAAAAAAiAAImoIIAAAAABABAFAAIMAAiAAAAAAAA=</HashCode>
+      <HashCode>hAMAAAAAAAiAAImoIIAAAAABEBAFAAIMAAiAAAAAAAA=</HashCode>
       <FileName>Common\Constants.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -25,7 +25,7 @@
   <Class Name="BattleGame.Engine.GameEngine" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="19.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAEAAAIAAgAAAAAAAAAAQABAAAQAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAEAAAIAAAAAAAAEAAAQQAJAAAQAAA=</HashCode>
       <FileName>Engine\GameEngine.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -113,7 +113,29 @@
       <FileName>Startup.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="BattleGame.Contracts.IBattle" Collapsed="true">
+  <Class Name="BattleGame.Factories.PlayerFactory" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\PlayerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleGame.Factories.UnitFactory" Collapsed="true">
+    <Position X="6.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQAAAAAAIAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Factories\UnitFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleGame.Parsers.UnitParser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>Parsers\UnitParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="BattleGame.Contracts.IBattleManager" Collapsed="true">
     <Position X="17.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -121,7 +143,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="BattleGame.Contracts.IBattleUnit" Collapsed="true">
-    <Position X="8.25" Y="7.5" Width="1.5" />
+    <Position X="4.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>Contracts\IBattleUnit.cs</FileName>
@@ -135,7 +157,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="BattleGame.Contracts.IForceUnit" Collapsed="true">
-    <Position X="10.5" Y="7.5" Width="1.5" />
+    <Position X="6.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>Contracts\IForceUnit.cs</FileName>
@@ -156,7 +178,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="BattleGame.Contracts.IUnit" Collapsed="true">
-    <Position X="9.5" Y="6.25" Width="1.5" />
+    <Position X="6.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAIAAAAAAAAAAAgAEAAA=</HashCode>
       <FileName>Contracts\IUnit.cs</FileName>
@@ -167,6 +189,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
       <FileName>Contracts\IWriter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BattleGame.Contracts.IAttackingUnit" Collapsed="true">
+    <Position X="4.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Contracts\IAttackingUnit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BattleGame.Contracts.IUnitParser" Collapsed="true">
+    <Position X="5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IUnitParser.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="BattleGame.Common.Enums.TypeOfAttack" Collapsed="true">

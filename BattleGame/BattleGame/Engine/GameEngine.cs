@@ -34,37 +34,37 @@
         {
             InitializePlayerUnits(this.firstPlayer, Constants.FirstPlayerMessage);
             InitializePlayerUnits(this.secondPlayer, Constants.SecondPlayerMessage);
+                Console.Clear();
 
             ShowPlayer(this.firstPlayer);
             ShowPlayer(this.secondPlayer);
 
             // Game cycle 
             var isFirstPlayerTurn = true;
-            while (this.firstPlayer.Army.Count != 0 && this.secondPlayer.Army.Count != 0)
-            {
+            //while (this.firstPlayer.Army.Count != 0 && this.secondPlayer.Army.Count != 0)
+            //{
+            //    if (isFirstPlayerTurn)
+            //    {
+            //        // this.battleManager.Battle();
+            //    }
+            //    else
+            //    {
 
-                if (isFirstPlayerTurn)
-                {
-                    // this.battleManager.Battle();
-                }
-                else
-                {
+            //    }
 
-                }
+            //    //string currentLine = this.reader.ReadLine();
 
-                string currentLine = this.reader.ReadLine();
-
-                break;
-            }
+            //    break;
+            //}
         }
 
         private void ShowPlayer(IPlayer player)
         {
-            this.writer.WriteLine(player.Name);
+            this.writer.WriteLineInYellow(player.ToString());
 
             foreach (var unit in player.Army)
             {
-                this.writer.WriteLine(unit.Print());
+                this.writer.WriteLineInGreen(unit.Print());
             }
         }
 

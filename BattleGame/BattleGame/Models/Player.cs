@@ -72,7 +72,7 @@ namespace BattleGame.Models
 
         public override string ToString()
         {
-            return this.Name;
+            return $"PLAYER NAME: {this.Name}";
         }
     }
 }

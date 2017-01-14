@@ -20,7 +20,7 @@
             var stb = new StringBuilder();
 
             stb.Append(base.Print());
-            stb.AppendLine($"Type of attack: {this.AttackType}");
+            stb.AppendLine($"Chance for success attack: 1/{(int)this.AttackType}");
 
             return stb.ToString();
         }

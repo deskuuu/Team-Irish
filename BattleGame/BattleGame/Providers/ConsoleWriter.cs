@@ -25,5 +25,19 @@
         {
             Console.WriteLine(message);
         }
+
+        public void WriteLineInYellow(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public void WriteLineInGreen(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
