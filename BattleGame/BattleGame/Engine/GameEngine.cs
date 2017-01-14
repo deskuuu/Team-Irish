@@ -44,7 +44,7 @@
             //this.secondPlayer.Army = secondPlayerArmy;
 
             ShowPlayer(this.firstPlayer);
-           // ShowPlayer(this.secondPlayer);
+            // ShowPlayer(this.secondPlayer);
 
             // Game cycle 
 
