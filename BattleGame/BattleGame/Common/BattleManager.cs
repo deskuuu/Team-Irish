@@ -12,7 +12,7 @@ namespace BattleGame.Common
         public void Battle(IBattleUnit playerOneUnit, IBattleUnit playerTwoUnit)
         {
             Random successfulHit = new Random();
-            int hitResult = successfulHit.Next(0, 1);
+            int hitResult = successfulHit.Next(0, 2);
             if (hitResult == 0)
             {
                 Console.WriteLine("Attack was unsuccessful!");
