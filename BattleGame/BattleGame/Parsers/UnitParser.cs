@@ -13,7 +13,6 @@ namespace BattleGame.Parsers
 {
     public class UnitParser : IUnitParser
     {
-
         private IWriter writer;
         private IReader reader;
 

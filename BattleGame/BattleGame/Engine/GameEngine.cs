@@ -32,28 +32,15 @@
 
         public void Start()
         {
-            // First player
-            this.writer.WriteLine(Constants.FirstPlayerMessage);
-            string firstPlayerName = this.reader.ReadLine();
-            this.firstPlayer.Name = firstPlayerName;
-
-            IList<IBattleUnit> firstPlayerArmy = this.unitParser.ParseUnits();
-            this.firstPlayer.Army = firstPlayerArmy;
-
-            // Second player 
-            this.writer.WriteLine(Constants.SecondPlayerMessage);
-            string secondPlayerName = this.reader.ReadLine();
-            this.secondPlayer.Name = secondPlayerName;
-
-            IList<IBattleUnit> secondPlayerArmy = this.unitParser.ParseUnits();
-            this.secondPlayer.Army = secondPlayerArmy;
+            InitializePlayerUnits(this.firstPlayer, Constants.FirstPlayerMessage);
+            InitializePlayerUnits(this.secondPlayer, Constants.SecondPlayerMessage);
 
             ShowPlayer(this.firstPlayer);
             ShowPlayer(this.secondPlayer);
 
             // Game cycle 
             var isFirstPlayerTurn = true;
-            while (firstPlayerArmy.Count != 0 && secondPlayerArmy.Count != 0)
+            while (this.firstPlayer.Army.Count != 0 && this.secondPlayer.Army.Count != 0)
             {
 
                 if (isFirstPlayerTurn)
@@ -79,6 +66,16 @@
             {
                 this.writer.WriteLine(unit.Print());
             }
+        }
+
+        private void InitializePlayerUnits(IPlayer player, string message)
+        {
+            this.writer.WriteLine(message);
+            string playerName = this.reader.ReadLine();
+            player.Name = playerName;
+
+            IList<IBattleUnit> PlayerArmy = this.unitParser.ParseUnits();
+            player.Army = PlayerArmy;
         }
     }
 }
