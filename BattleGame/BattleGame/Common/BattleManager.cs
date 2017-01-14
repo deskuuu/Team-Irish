@@ -3,9 +3,17 @@
     using System;
 
     using Contracts;
+    using Providers;
 
     public class BattleManager : IBattleManager
     {
+        private IWriter writer;
+
+        public BattleManager()
+        {
+            this.writer = new ConsoleWriter();
+        }
+
         public void Battle(IBattleUnit attackUnit, IBattleUnit defenceUnit)
         {
             Random successfulHit = new Random();
@@ -13,12 +21,12 @@
 
             if (hitResult == 1)
             {
-                Console.WriteLine(Constants.AttackResultUnsuccesMessage);
+                this.writer.WriteLine(Constants.AttackResultUnsuccesMessage);
             }
             else
             {
                 defenceUnit.Health -= attackUnit.Attack;
-                Console.WriteLine(Constants.AttackResultSuccesMessage);
+                this.writer.WriteLine(Constants.AttackResultSuccesMessage);
             }
         }
     }
