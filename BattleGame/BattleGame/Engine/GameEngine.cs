@@ -19,8 +19,8 @@
 
         public GameEngine()
         {
-            this.firstPlayer = new Player();
-            this.secondPlayer = new Player();
+            this.firstPlayer = PlayerFactory.CreatePlayer();
+            this.secondPlayer = PlayerFactory.CreatePlayer();
 
             this.reader = new ConsoleReader();
             this.writer = new ConsoleWriter();
@@ -92,7 +92,7 @@
                 case "s": unit = UnitFactory.CreateSwordman(name); break;
                 case "m": unit = UnitFactory.CreateMagician(name); break;
                 case "p": unit = UnitFactory.CreatePikeman(name); break;
-                default: unit = null; break;
+                default: throw new ArgumentException(Constants.InvalidUnitType);
             }
 
             if (unit == null)

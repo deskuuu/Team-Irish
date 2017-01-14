@@ -48,6 +48,7 @@
     <Compile Include="Contracts\IBattle.cs" />
     <Compile Include="Contracts\IBattleUnit.cs" />
     <Compile Include="Contracts\IForceUnit.cs" />
+    <Compile Include="Factories\PlayerFactory.cs" />
     <Compile Include="Factories\UnitFactory.cs" />
     <Compile Include="Models\Archer.cs" />
     <Compile Include="Common\Constants.cs" />

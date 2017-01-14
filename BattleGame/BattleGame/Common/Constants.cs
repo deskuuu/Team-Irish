@@ -8,6 +8,7 @@
         public const string ChooseUnitsMessage = "On next lines chose three units and give them names in format: <unit> <name>";
         public const string UnitsInformationMessage = "'s' -> swordmen  ||  'a' -> archer  ||  'p' -> pikmen  ||  'm' -> magician";
         public const string InvalidName = "Invalid name";
+        public const string InvalidUnitType = "Invalid unit type!";
         public const int MinValue = 0;
         public const string InvalidValueMessage = "This value must be greather than 0!";
         public const string InvalidUnitException = "Invalid unit!";
