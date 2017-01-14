@@ -244,7 +244,5 @@
             displayMenuItems.Visible = false;
             btnMenu.Visible = false;
         }
-
-      
     }
 }
