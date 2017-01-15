@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading;
     using Common;
     using Common.Exceptions;
     using Contracts;
@@ -36,8 +37,7 @@
             InitializePlayerUnits(this.secondPlayer, Constants.SecondPlayerMessage);
             Console.Clear();
 
-            ShowPlayer(this.firstPlayer);
-            ShowPlayer(this.secondPlayer);
+            ShowPlayers(this.firstPlayer, this.secondPlayer);
 
             // for quick tests
 
@@ -73,8 +73,9 @@
                         this.firstPlayer.Army.Remove(defender);
                     }
 
-                    ShowPlayer(this.firstPlayer);
-                    ShowPlayer(this.secondPlayer);
+                    CheckForDeadUnit(this.secondPlayer);
+
+                    ShowPlayers(this.firstPlayer, this.secondPlayer);
                 }
                 else
                 {
@@ -89,14 +90,9 @@
 
                     this.battleManager.Battle(attacker, defender);
 
-                    if (this.secondPlayer.Army[defendUnitIndex].Health <= 0)
-                    {
-                        this.writer.WriteLineInRed(Constants.UnitIsDead);
-                        this.secondPlayer.Army.Remove(defender);
-                    }
+                    CheckForDeadUnit(this.firstPlayer);
+                    ShowPlayers(this.firstPlayer, this.secondPlayer);
 
-                    ShowPlayer(this.firstPlayer);
-                    ShowPlayer(this.secondPlayer);
                 }
 
                 // change turn
@@ -105,23 +101,57 @@
 
             if (this.firstPlayer.Army.Count == 0)
             {
-                this.writer.WriteLine(Constants.SecondPlayerWinMessage);
-                this.writer.WriteLineInGreen(Constants.SecondPlayerWinMessage);
-                this.writer.WriteLineInRed(Constants.SecondPlayerWinMessage);
+                FinalMessage(Constants.SecondPlayerWinMessage);
             }
             else
             {
-                this.writer.WriteLine(Constants.FirstPlayerWinMessage);
-                this.writer.WriteLineInGreen(Constants.FirstPlayerWinMessage);
-                this.writer.WriteLineInRed(Constants.FirstPlayerWinMessage);
+                FinalMessage(Constants.FirstPlayerWinMessage);
             }
         }
 
-        private void ShowPlayer(IPlayer player)
+        private void CheckForDeadUnit(IPlayer player)
         {
-            this.writer.WriteLineInYellow(player.ToString());
+            IList<IBattleUnit> changedArmy = new List<IBattleUnit>();
 
-            foreach (var unit in player.Army)
+            foreach (IBattleUnit unit in player.Army)
+            {
+                if (unit.Health <= 0)
+                {
+                    this.writer.WriteLineInRed(Constants.UnitIsDead);
+                }
+                else
+                {
+                    changedArmy.Add(unit);
+                }
+            }
+
+            player.Army = changedArmy;
+
+            ShowPlayers(this.firstPlayer, this.secondPlayer);
+        }
+
+        private void FinalMessage(string winMessage)
+        {
+            this.writer.WriteLine(winMessage);
+            this.writer.WriteLineInGreen(winMessage);
+            this.writer.WriteLineInRed(winMessage);
+            Thread.Sleep(1000);
+        }
+
+        private void ShowPlayers(IPlayer firstPlayer, IPlayer secondPlayer)
+        {
+            // first player
+            this.writer.WriteLineInYellow(firstPlayer.ToString());
+
+            foreach (var unit in firstPlayer.Army)
+            {
+                this.writer.WriteLineInGreen(unit.Print());
+            }
+
+            // second player
+            this.writer.WriteLineInYellow(secondPlayer.ToString());
+
+            foreach (var unit in secondPlayer.Army)
             {
                 this.writer.WriteLineInGreen(unit.Print());
             }
