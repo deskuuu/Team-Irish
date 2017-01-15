@@ -1,5 +1,6 @@
 ﻿namespace BattleGame
 {
+    using System;
     using Contracts;
     using Engine;
 
@@ -8,6 +9,7 @@
         public static void Main()
         {
             IEngine engine = new GameEngine();
+            engine.OnEngineMessageEvent += (message) => Console.WriteLine(message);
             engine.Start();
         }
     }

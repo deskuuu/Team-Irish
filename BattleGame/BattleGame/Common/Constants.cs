@@ -53,5 +53,9 @@
         public const int MagicianAttack = 27;
         public const int MagicianDefense = 50;
         public const int MagicianHealth = 45;
+
+
+        //Game End Message
+        public const string EndMessage = "This is THE END OF THE GAME!!!";
     }
 }

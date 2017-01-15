@@ -21,6 +21,8 @@
         private IReader reader;
         private IWriter writer;
 
+        public event EngineMessage OnEngineMessageEvent;
+
         public GameEngine()
         {
             this.firstPlayer = PlayerFactory.CreatePlayer();
@@ -110,6 +112,11 @@
             else
             {
                 FinalMessage(Constants.FirstPlayerWinMessage);
+            }
+
+            if(this.OnEngineMessageEvent != null)
+            {
+                this.OnEngineMessageEvent(Constants.EndMessage);
             }
         }
 
