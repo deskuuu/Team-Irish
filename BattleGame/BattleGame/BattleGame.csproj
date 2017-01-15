@@ -46,6 +46,7 @@
     <Compile Include="Common\BattleManager.cs" />
     <Compile Include="Common\Exceptions\InvalidAttackException.cs" />
     <Compile Include="Common\Exceptions\InvalidUnitException.cs" />
+    <Compile Include="Common\MusicPlayer.cs" />
     <Compile Include="Contracts\IAttackingUnit.cs" />
     <Compile Include="Contracts\IBaseUnit.cs" />
     <Compile Include="Contracts\IBattle.cs" />
@@ -82,6 +83,11 @@
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Media\music.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
