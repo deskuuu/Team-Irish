@@ -46,5 +46,10 @@
             Console.WriteLine(message);
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+        public void Clear()
+        {
+            Console.Clear();
+        }
     }
 }

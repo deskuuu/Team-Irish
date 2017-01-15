@@ -19,14 +19,13 @@
         public const string AttackResultUnsuccesMessage = "Attack was unsuccessful!";
 
         // Battle messages
-        public const string UnitIsDead = "The unit is dead!";
-        public const string FirstPlayerWinMessage = "**** FIRST PLAYER WINS ****";
-        public const string SecondPlayerWinMessage = "**** SECOND PLAYER WINS ****";
+        public const string UnitIsDead = "{0} is dead!";
+        public const string FirstPlayerWinMessage = "**** {0} WINS ****";
+        public const string SecondPlayerWinMessage = "**** {0} WINS ****";
 
 
         // Turn messages
-        public const string FirstPlayerTurnMessage = "FIRST PLAYER TURN...";
-        public const string SecondPlayerTurnMessage = "SECOND PLAYER TURN...";
+        public const string PlayerTurnMessage = "{0} is on TURN...";
 
         public const string NameMessage = "Name:";
         public const string AttackMessage = "Attack:";
@@ -53,7 +52,6 @@
         public const int MagicianAttack = 27;
         public const int MagicianDefense = 50;
         public const int MagicianHealth = 45;
-
 
         //Game End Message
         public const string EndMessage = "This is THE END OF THE GAME!!!";

@@ -15,5 +15,7 @@
         void WriteLineInGreen(string message);
 
         void WriteLineInRed(string message);
+
+        void Clear();
     }
 }

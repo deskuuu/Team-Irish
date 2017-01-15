@@ -41,24 +41,13 @@
 
             ShowPlayers(this.firstPlayer, this.secondPlayer);
 
-            // for quick tests
-
-            //    Pesho
-            //    a Ivancho1
-            //    s Ivancho2
-            //    m Ivancho3
-            //    Gosho
-            //    a Dragan1
-            //    s Dragan2
-            //    p Dragan3
-
             // Game cycle 
             var isFirstPlayerTurn = true;
             while (this.firstPlayer.Army.Count != 0 && this.secondPlayer.Army.Count != 0)
             {
                 if (isFirstPlayerTurn)
                 {
-                    this.writer.WriteLine(Constants.FirstPlayerTurnMessage);
+                    this.writer.WriteLine(string.Format(Constants.PlayerTurnMessage, this.firstPlayer.Name));
 
                     string currentCommand = this.reader.ReadLine();
                     int[] parts = currentCommand.Split(' ').Select(x => int.Parse(x)).ToArray();
@@ -85,7 +74,7 @@
                 }
                 else
                 {
-                    this.writer.WriteLine(Constants.SecondPlayerTurnMessage);
+                    this.writer.WriteLine(string.Format(Constants.PlayerTurnMessage, this.secondPlayer.Name));
 
                     string currentCommand = this.reader.ReadLine();
                     int[] parts = currentCommand.Split(' ').Select(x => int.Parse(x)).ToArray();
@@ -107,11 +96,11 @@
 
             if (this.firstPlayer.Army.Count == 0)
             {
-                FinalMessage(Constants.SecondPlayerWinMessage);
+                FinalMessage(Constants.SecondPlayerWinMessage, this.firstPlayer);
             }
             else
             {
-                FinalMessage(Constants.FirstPlayerWinMessage);
+                FinalMessage(Constants.FirstPlayerWinMessage, this.secondPlayer);
             }
 
             if(this.OnEngineMessageEvent != null)
@@ -128,7 +117,8 @@
             {
                 if (unit.Health <= 0)
                 {
-                    this.writer.WriteLineInRed(Constants.UnitIsDead);
+                    this.writer.WriteLineInRed(string.Format(Constants.UnitIsDead, unit.Name));
+                    Thread.Sleep(4800);
                 }
                 else
                 {
@@ -141,16 +131,18 @@
             ShowPlayers(this.firstPlayer, this.secondPlayer);
         }
 
-        private void FinalMessage(string winMessage)
+        private void FinalMessage(string winMessage, IPlayer player)
         {
-            this.writer.WriteLine(winMessage);
-            this.writer.WriteLineInGreen(winMessage);
-            this.writer.WriteLineInRed(winMessage);
-            Thread.Sleep(1000);
+            this.writer.WriteLine(string.Format(winMessage, player.Name));
+            this.writer.WriteLineInGreen(string.Format(winMessage, player.Name));
+            this.writer.WriteLineInRed(string.Format(winMessage, player.Name));
+            Thread.Sleep(5000);
         }
 
         private void ShowPlayers(IPlayer firstPlayer, IPlayer secondPlayer)
         {
+            this.writer.Clear();
+
             // first player
             this.writer.WriteLineInYellow(firstPlayer.ToString());
 
