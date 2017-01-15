@@ -60,6 +60,10 @@
 
                     string currentCommand = this.reader.ReadLine();
                     int[] parts = currentCommand.Split(' ').Select(x => int.Parse(x)).ToArray();
+                    if (parts.Length != 2 || parts[0] < 1 || parts[0] > firstPlayer.Army.Count || parts[1] < 1 || parts[1] > secondPlayer.Army.Count)
+                    {
+                        throw new InvalidAttackException();
+                    }
                     int attackUnitIndex = parts[0] - 1;
                     int defendUnitIndex = parts[1] - 1;
                     IBattleUnit attacker = this.firstPlayer.Army[attackUnitIndex];

@@ -25,7 +25,10 @@ namespace BattleGame.Parsers
         public IBattleUnit ParseStringToUnit(string unitAsString)
         {
             var parts = unitAsString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
-
+            if (parts.Length != 2)
+            {
+                throw new InvalidUnitException();
+            }
             var typeOfUnit = parts[0].ToLower();
             var name = parts[1];
             IBattleUnit unit = null;

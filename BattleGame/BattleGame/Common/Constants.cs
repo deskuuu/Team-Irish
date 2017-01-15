@@ -12,6 +12,7 @@
         public const int MinValue = 0;
         public const string InvalidValueMessage = "This value must be greater than 0!";
         public const string InvalidUnitException = "Invalid unit!";
+        public const string InvalidAttackAction = "Invalid attack input!";
         public const int DefaultPlayerPoints = 0;
 
         public const string AttackResultSuccesMessage = "Attack was successful!";

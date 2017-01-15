@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BattleManager.cs" />
+    <Compile Include="Common\Exceptions\InvalidAttackException.cs" />
     <Compile Include="Common\Exceptions\InvalidUnitException.cs" />
     <Compile Include="Contracts\IAttackingUnit.cs" />
     <Compile Include="Contracts\IBaseUnit.cs" />
