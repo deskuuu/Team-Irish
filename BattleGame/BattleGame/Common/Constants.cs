@@ -5,12 +5,12 @@
         public const string DefaultPlayerName = "Player";
         public const string FirstPlayerMessage = "Enter first player name: ";
         public const string SecondPlayerMessage = "Enter second player name: ";
-        public const string ChooseUnitsMessage = "On next lines chose three units and give them names in format: <unit> <name>";
-        public const string UnitsInformationMessage = "'s' -> swordmen  ||  'a' -> archer  ||  'p' -> pikmen  ||  'm' -> magician";
+        public const string ChooseUnitsMessage = "On next lines choose three units and give them names in format: <unit> <name>";
+        public const string UnitsInformationMessage = "'s' -> swordman  ||  'a' -> archer  ||  'p' -> pikeman  ||  'm' -> magician";
         public const string InvalidName = "Invalid name";
         public const string InvalidUnitType = "Invalid unit type!";
         public const int MinValue = 0;
-        public const string InvalidValueMessage = "This value must be greather than 0!";
+        public const string InvalidValueMessage = "This value must be greater than 0!";
         public const string InvalidUnitException = "Invalid unit!";
         public const int DefaultPlayerPoints = 0;
 
@@ -19,8 +19,8 @@
 
         // Battle messages
         public const string UnitIsDead = "The unit is dead!";
-        public const string FirstPlayerWinMessage = "**** FIRST PLAYER WIN ****";
-        public const string SecondPlayerWinMessage = "**** SECOND PLAYER WIN ****";
+        public const string FirstPlayerWinMessage = "**** FIRST PLAYER WINS ****";
+        public const string SecondPlayerWinMessage = "**** SECOND PLAYER WINS ****";
 
 
         // Turn messages
