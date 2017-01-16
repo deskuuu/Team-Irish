@@ -1,15 +1,16 @@
 ﻿namespace BattleGame
 {
     using System;
+
+    using Common;
     using Contracts;
     using Engine;
-    using Common;
 
     public class Startup
     {
         public static void Main()
         {
-            MusicPlayer backgroundMusicPlayer = new MusicPlayer(".\\Media\\music.wav");
+            var backgroundMusicPlayer = new MusicPlayer(Constants.MusicPath);
             backgroundMusicPlayer.PlayLooping();
             IEngine engine = new GameEngine();
             engine.OnEngineMessageEvent += (message) => Console.WriteLine(message);

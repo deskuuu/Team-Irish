@@ -4,13 +4,14 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
+
     using Common;
     using Common.Exceptions;
     using Contracts;
     using Factories;
-    using Models;
     using Parsers;
     using Providers;
+    using System.IO;
 
     public sealed class GameEngine : IEngine
     {
@@ -20,8 +21,6 @@
         private IUnitParser unitParser;
         private IReader reader;
         private IWriter writer;
-
-        public event EngineMessage OnEngineMessageEvent;
 
         public GameEngine()
         {
@@ -33,13 +32,17 @@
             this.writer = new ConsoleWriter();
         }
 
+        public event EngineMessage OnEngineMessageEvent;
+
         public void Start()
         {
-            InitializePlayerUnits(this.firstPlayer, Constants.FirstPlayerMessage);
-            InitializePlayerUnits(this.secondPlayer, Constants.SecondPlayerMessage);
+            this.SetupConsol();
+            this.PrintWelcome();
+            this.InitializePlayerUnits(this.firstPlayer, Constants.FirstPlayerMessage);
+            this.InitializePlayerUnits(this.secondPlayer, Constants.SecondPlayerMessage);
             Console.Clear();
 
-            ShowPlayers(this.firstPlayer, this.secondPlayer);
+            this.ShowPlayers(this.firstPlayer, this.secondPlayer);
 
             // Game cycle 
             var isFirstPlayerTurn = true;
@@ -49,16 +52,17 @@
                 {
                     this.writer.WriteLine(string.Format(Constants.PlayerTurnMessage, this.firstPlayer.Name));
 
-                    string currentCommand = this.reader.ReadLine();
-                    int[] parts = currentCommand.Split(' ').Select(x => int.Parse(x)).ToArray();
-                    if (parts.Length != 2 || parts[0] < 1 || parts[0] > firstPlayer.Army.Count || parts[1] < 1 || parts[1] > secondPlayer.Army.Count)
+                    var currentCommand = this.reader.ReadLine().Trim();
+                    var parts = currentCommand.Split(' ').Select(x => int.Parse(x)).ToArray();
+                    if (parts.Length != 2 || parts[0] < 1 || parts[0] > this.firstPlayer.Army.Count || parts[1] < 1 || parts[1] > this.secondPlayer.Army.Count)
                     {
                         throw new InvalidAttackException();
                     }
-                    int attackUnitIndex = parts[0] - 1;
-                    int defendUnitIndex = parts[1] - 1;
-                    IBattleUnit attacker = this.firstPlayer.Army[attackUnitIndex];
-                    IBattleUnit defender = this.secondPlayer.Army[defendUnitIndex];
+
+                    var attackUnitIndex = parts[0] - 1;
+                    var defendUnitIndex = parts[1] - 1;
+                    var attacker = this.firstPlayer.Army[attackUnitIndex];
+                    var defender = this.secondPlayer.Army[defendUnitIndex];
 
                     this.battleManager.Battle(attacker, defender);
 
@@ -68,26 +72,25 @@
                         this.firstPlayer.Army.Remove(defender);
                     }
 
-                    CheckForDeadUnit(this.secondPlayer);
+                    this.CheckForDeadUnit(this.secondPlayer);
 
-                    ShowPlayers(this.firstPlayer, this.secondPlayer);
+                    this.ShowPlayers(this.firstPlayer, this.secondPlayer);
                 }
                 else
                 {
                     this.writer.WriteLine(string.Format(Constants.PlayerTurnMessage, this.secondPlayer.Name));
 
-                    string currentCommand = this.reader.ReadLine();
-                    int[] parts = currentCommand.Split(' ').Select(x => int.Parse(x)).ToArray();
-                    int attackUnitIndex = parts[0] - 1;
-                    int defendUnitIndex = parts[1] - 1;
-                    IBattleUnit attacker = this.secondPlayer.Army[attackUnitIndex];
-                    IBattleUnit defender = this.firstPlayer.Army[defendUnitIndex];
+                    var currentCommand = this.reader.ReadLine();
+                    var parts = currentCommand.Split(' ').Select(x => int.Parse(x)).ToArray();
+                    var attackUnitIndex = parts[0] - 1;
+                    var defendUnitIndex = parts[1] - 1;
+                    var attacker = this.secondPlayer.Army[attackUnitIndex];
+                    var defender = this.firstPlayer.Army[defendUnitIndex];
 
                     this.battleManager.Battle(attacker, defender);
 
-                    CheckForDeadUnit(this.firstPlayer);
-                    ShowPlayers(this.firstPlayer, this.secondPlayer);
-
+                    this.CheckForDeadUnit(this.firstPlayer);
+                    this.ShowPlayers(this.firstPlayer, this.secondPlayer);
                 }
 
                 // change turn
@@ -96,17 +99,32 @@
 
             if (this.firstPlayer.Army.Count == 0)
             {
-                FinalMessage(Constants.SecondPlayerWinMessage, this.firstPlayer);
+                this.FinalMessage(Constants.SecondPlayerWinMessage, this.firstPlayer);
             }
             else
             {
-                FinalMessage(Constants.FirstPlayerWinMessage, this.secondPlayer);
+                this.FinalMessage(Constants.FirstPlayerWinMessage, this.secondPlayer);
             }
 
-            if(this.OnEngineMessageEvent != null)
-            {
-                this.OnEngineMessageEvent(Constants.EndMessage);
-            }
+            this.OnEngineMessageEvent?.Invoke(Constants.EndMessage);
+        }
+
+        private void PrintWelcome()
+        {
+            var lines = File.ReadAllLines(Constants.WelcomePath);
+
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            this.writer.WriteLine(lines);
+            Console.ForegroundColor= ConsoleColor.Black;
+        }
+
+        private void SetupConsol()
+        {
+            Console.Title = Constants.GameTitle;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+
         }
 
         private void CheckForDeadUnit(IPlayer player)
@@ -128,7 +146,7 @@
 
             player.Army = changedArmy;
 
-            ShowPlayers(this.firstPlayer, this.secondPlayer);
+            this.ShowPlayers(this.firstPlayer, this.secondPlayer);
         }
 
         private void FinalMessage(string winMessage, IPlayer player)
@@ -163,11 +181,11 @@
         private void InitializePlayerUnits(IPlayer player, string message)
         {
             this.writer.WriteLine(message);
-            string playerName = this.reader.ReadLine();
+            var playerName = this.reader.ReadLine();
             player.Name = playerName;
 
-            IList<IBattleUnit> PlayerArmy = this.unitParser.ParseUnits();
-            player.Army = PlayerArmy;
+            IList<IBattleUnit> playerArmy = this.unitParser.ParseUnits();
+            player.Army = playerArmy;
         }
     }
 }

@@ -13,7 +13,7 @@
 
         public ForceUnit(string name) : base(name)
         {
-            this.AttackType = attackType;
+            this.AttackType = this.attackType;
         }
 
         public TypeOfAttack AttackType { get; set; }
@@ -23,7 +23,7 @@
             var stb = new StringBuilder();
 
             stb.Append(base.Print());
-            stb.AppendLine($"Chance for success attack: 1/{(int)this.AttackType}");
+            stb.AppendLine($"{Constants.ChanseForAttackMessage} {(int)this.AttackType}");
 
             return stb.ToString();
         }

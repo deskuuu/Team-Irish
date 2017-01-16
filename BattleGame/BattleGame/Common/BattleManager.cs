@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading;
+
     using Contracts;
     using Providers;
 
@@ -16,8 +17,8 @@
 
         public void Battle(IBattleUnit attackUnit, IBattleUnit defenceUnit)
         {
-            Random successfulHit = new Random();
-            int hitResult = successfulHit.Next(1, (int)attackUnit.AttackType);
+            var successfulHit = new Random();
+            var hitResult = successfulHit.Next(1, (int)attackUnit.AttackType);
 
             if (hitResult == 1)
             {

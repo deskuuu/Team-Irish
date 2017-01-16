@@ -17,5 +17,6 @@
         void WriteLineInRed(string message);
 
         void Clear();
+        void WriteLine(string[] lines);
     }
 }

@@ -51,5 +51,15 @@
         {
             Console.Clear();
         }
+
+        public void WriteLine(string[] lines)
+        {
+            foreach (var text in lines)
+            {
+                var currentCol = (Console.WindowWidth / 2) - (text.Length / 2) + 1;
+                Console.Write(new string(' ', currentCol));
+                Console.WriteLine(text);
+            }
+        }
     }
 }

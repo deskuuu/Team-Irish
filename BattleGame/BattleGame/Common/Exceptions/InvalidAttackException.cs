@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BattleGame.Common.Exceptions
+﻿namespace BattleGame.Common.Exceptions
 {
-    class InvalidAttackException : ApplicationException
+    using System;
+
+    public class InvalidAttackException : ApplicationException
     {
         public InvalidAttackException()
         {

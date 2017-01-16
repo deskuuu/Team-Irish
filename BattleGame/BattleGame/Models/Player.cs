@@ -8,15 +8,15 @@
 
     public class Player : BaseUnit, IPlayer
     {
-        public IList<IBattleUnit> Army { get; set; }
-
-        public int Points { get; set; }
-
         public Player(string name = Constants.DefaultPlayerName) : base(name)
         {
             this.Army = new List<IBattleUnit>();
             this.Points = Constants.DefaultPlayerPoints;
         }
+
+        public IList<IBattleUnit> Army { get; set; }
+
+        public int Points { get; set; }
 
         public void AddUnit(IBattleUnit unitForAdd)
         {
@@ -30,7 +30,7 @@
 
         public override string ToString()
         {
-            return $"PLAYER NAME: {this.Name}";
+            return $"{Constants.PlayerNameMessage} {this.Name}";
         }
     }
 }

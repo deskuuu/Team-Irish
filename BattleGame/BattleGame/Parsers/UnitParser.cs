@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BattleGame.Common;
-using BattleGame.Common.Exceptions;
-using BattleGame.Contracts;
-using BattleGame.Factories;
-using BattleGame.Providers;
-
-namespace BattleGame.Parsers
+﻿namespace BattleGame.Parsers
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Common;
+    using Common.Exceptions;
+    using Contracts;
+    using Factories;
+    using Providers;
+
     public class UnitParser : IUnitParser
     {
         private IWriter writer;
@@ -25,21 +23,31 @@ namespace BattleGame.Parsers
         public IBattleUnit ParseStringToUnit(string unitAsString)
         {
             var parts = unitAsString.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
+
             if (parts.Length != 2)
             {
                 throw new InvalidUnitException();
             }
+
             var typeOfUnit = parts[0].ToLower();
             var name = parts[1];
             IBattleUnit unit = null;
 
             switch (typeOfUnit)
             {
-                case "a": unit = UnitFactory.CreateArcher(name); break;
-                case "s": unit = UnitFactory.CreateSwordman(name); break;
-                case "m": unit = UnitFactory.CreateMagician(name); break;
-                case "p": unit = UnitFactory.CreatePikeman(name); break;
-                default: throw new InvalidUnitException();
+                case Constants.AChoice:
+                    unit = UnitFactory.CreateArcher(name);
+                    break;
+                case Constants.SChoice:
+                    unit = UnitFactory.CreateSwordman(name);
+                    break;
+                case Constants.MChoice:
+                    unit = UnitFactory.CreateMagician(name);
+                    break;
+                case Constants.PChoice:
+                    unit = UnitFactory.CreatePikeman(name);
+                    break;
+                   default: throw new InvalidUnitException();
             }
 
             return unit;
@@ -54,11 +62,11 @@ namespace BattleGame.Parsers
             var secondUnitAsString = this.reader.ReadLine();
             var thirdUnitAsString = this.reader.ReadLine();
 
-            IBattleUnit firstUnits = ParseStringToUnit(firstUnitAsString);
-            IBattleUnit secondUnits = ParseStringToUnit(secondUnitAsString);
-            IBattleUnit thirdUnits = ParseStringToUnit(thirdUnitAsString);
+            var firstUnits = this.ParseStringToUnit(firstUnitAsString);
+            var secondUnits = this.ParseStringToUnit(secondUnitAsString);
+            var thirdUnits = this.ParseStringToUnit(thirdUnitAsString);
 
-            IList<IBattleUnit> result = new List<IBattleUnit>();
+            var result = new List<IBattleUnit>();
             result.Add(firstUnits);
             result.Add(secondUnits);
             result.Add(thirdUnits);

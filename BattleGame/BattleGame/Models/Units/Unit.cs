@@ -13,9 +13,9 @@
 
         public Unit(string name) : base(name)
         {
-            this.Attack = attack;
-            this.Defense = defense;
-            this.Health = health;
+            this.Attack = this.attack;
+            this.Defense = this.defense;
+            this.Health = this.health;
         }
 
         public int Attack
