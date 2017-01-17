@@ -1,4 +1,5 @@
 ## Team Irish
+- A battle game which is played by two people. Every player choose exactly three units. Players are changing their turn one after another. Every player gives a command and choose one of his own units and with it he attacks the other player unit.
 
 ## Team members :
 
