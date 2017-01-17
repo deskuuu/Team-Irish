@@ -15,6 +15,15 @@
     - Petar.Yanev
     - Marian_Nikolov
 
+## Members that take part of the project:
+
+	- desislavaaaa
+	- Marian_Nikolov
+	- Vlaev
+	- vgutev 
+	- Simeon_Gerginov
+	- simeonov.anton
+	
 ## Project purpose:
 
     - It's a turn-based console game for two player which represent battles of ancient armies
