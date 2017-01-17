@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Media\Logo.txt" />
     <Content Include="Media\music.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -5,7 +5,7 @@
     using Contracts;
     using Units;
 
-    public class Swordman : ForceUnit, IBattleUnit
+    public class Swordman : ForceUnit
     {
         public Swordman(string name) : base(name)
         {

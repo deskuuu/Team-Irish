@@ -13,7 +13,7 @@
             var backgroundMusicPlayer = new MusicPlayer(Constants.MusicPath);
             backgroundMusicPlayer.PlayLooping();
             IEngine engine = new GameEngine();
-            engine.OnEngineMessageEvent += (message) => Console.WriteLine(message);
+           
             engine.Start();
         }
     }

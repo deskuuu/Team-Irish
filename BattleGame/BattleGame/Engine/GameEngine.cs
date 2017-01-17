@@ -36,8 +36,7 @@
 
         public void Start()
         {
-            this.SetupConsol();
-            this.PrintWelcome();
+            this.SetupConsol();            
             this.InitializePlayerUnits(this.firstPlayer, Constants.FirstPlayerMessage);
             this.InitializePlayerUnits(this.secondPlayer, Constants.SecondPlayerMessage);
             Console.Clear();
@@ -108,16 +107,7 @@
 
             this.OnEngineMessageEvent?.Invoke(Constants.EndMessage);
         }
-
-        private void PrintWelcome()
-        {
-            var lines = File.ReadAllLines(Constants.WelcomePath);
-
-            Console.ForegroundColor = ConsoleColor.Red;
-
-            this.writer.WriteLine(lines);
-            Console.ForegroundColor= ConsoleColor.Black;
-        }
+        
 
         private void SetupConsol()
         {
