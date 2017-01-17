@@ -65,10 +65,10 @@
         {
             var stb = new StringBuilder();
 
-            stb.AppendLine($"{Constants.NameMessage} {this.Name}");
-            stb.AppendLine($"{Constants.AttackMessage} {this.Attack}");
-            stb.AppendLine($"{Constants.DefenseMessage} {this.Defense}");
-            stb.AppendLine($"{Constants.HealthMessage} {this.Health}");
+            stb.AppendLine($" {Constants.NameMessage} {this.Name}");
+            stb.AppendLine($"  - {Constants.AttackMessage} {this.Attack}");
+            stb.AppendLine($"  - {Constants.DefenseMessage} {this.Defense}");
+            stb.AppendLine($"  - {Constants.HealthMessage} {this.Health}");
 
             return stb.ToString();
         }

@@ -23,7 +23,7 @@
             var stb = new StringBuilder();
 
             stb.Append(base.Print());
-            stb.AppendLine($"{Constants.ChanseForAttackMessage} {(int)this.AttackType}");
+            stb.AppendLine($"  * {Constants.ChanseForAttackMessage}{(int)this.AttackType}");
 
             return stb.ToString();
         }

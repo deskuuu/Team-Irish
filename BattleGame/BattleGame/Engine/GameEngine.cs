@@ -98,11 +98,11 @@
 
             if (this.firstPlayer.Army.Count == 0)
             {
-                this.FinalMessage(Constants.SecondPlayerWinMessage, this.firstPlayer);
+                this.FinalMessage(Constants.SecondPlayerWinMessage, this.secondPlayer);
             }
             else
             {
-                this.FinalMessage(Constants.FirstPlayerWinMessage, this.secondPlayer);
+                this.FinalMessage(Constants.FirstPlayerWinMessage, this.firstPlayer);
             }
 
             this.OnEngineMessageEvent?.Invoke(Constants.EndMessage);
@@ -114,7 +114,6 @@
             Console.Title = Constants.GameTitle;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
-
         }
 
         private void CheckForDeadUnit(IPlayer player)

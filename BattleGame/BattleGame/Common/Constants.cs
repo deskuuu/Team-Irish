@@ -25,7 +25,7 @@
         public const int DefaultPlayerPoints = 0;
 
         public const string PlayerNameMessage = "PLAYER NAME:";
-        public const string ChanseForAttackMessage = "Chance for success attack: 1/";
+        public const string ChanseForAttackMessage = "Chance for successful attack: 1/";
         public const string AttackResultSuccesMessage = "Attack was successful!";
         public const string AttackResultUnsuccesMessage = "Attack was unsuccessful!";
 
@@ -37,31 +37,31 @@
         //// Turn messages
         public const string PlayerTurnMessage = "{0} is on TURN...";
 
-        public const string NameMessage = "Name:";
+        public const string NameMessage = "Unit name:";
         public const string AttackMessage = "Attack:";
-        public const string DefenseMessage = "Defense: ";
-        public const string HealthMessage = "Health: ";
+        public const string DefenseMessage = "Defense:";
+        public const string HealthMessage = "Health:";
         public const string AttackTypeMessage = "Type of attack:";
 
         ////Swordman stats
-        public const int SwordmanAttack = 20;
-        public const int SwordmanDefense = 40;
-        public const int SwordmanHealth = 30;
+        public const int SwordmanAttack = 40;
+        public const int SwordmanDefense = 60;
+        public const int SwordmanHealth = 100;
 
         ////Archer stats
-        public const int ArcherAttack = 22;
-        public const int ArcherDefense = 44;
-        public const int ArcherHealth = 35;
+        public const int ArcherAttack = 50;
+        public const int ArcherDefense = 40;
+        public const int ArcherHealth = 70;
 
         ////Pikeman stats
-        public const int PikemanAttack = 25;
-        public const int PikemanDefense = 41;
-        public const int PikemanHealth = 32;
+        public const int PikemanAttack = 60;
+        public const int PikemanDefense = 50;
+        public const int PikemanHealth = 80;
 
         ////Magician stats
-        public const int MagicianAttack = 27;
-        public const int MagicianDefense = 50;
-        public const int MagicianHealth = 45;
+        public const int MagicianAttack = 100;
+        public const int MagicianDefense = 30;
+        public const int MagicianHealth = 60;
 
         ////Game End Message
         public const string EndMessage = "This is THE END OF THE GAME!!!";
