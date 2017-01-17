@@ -15,6 +15,8 @@
 
     public sealed class GameEngine : IEngine
     {
+        private static IEngine instanceHolder = new GameEngine();
+
         private IPlayer firstPlayer;
         private IPlayer secondPlayer;
         private IBattleManager battleManager;
@@ -22,7 +24,7 @@
         private IReader reader;
         private IWriter writer;
 
-        public GameEngine()
+        private GameEngine()
         {
             this.firstPlayer = PlayerFactory.CreatePlayer();
             this.secondPlayer = PlayerFactory.CreatePlayer();
@@ -30,6 +32,17 @@
             this.unitParser = new UnitParser();
             this.reader = new ConsoleReader();
             this.writer = new ConsoleWriter();
+
+            var backgroundMusicPlayer = new MusicPlayer(Constants.MusicPath);
+            backgroundMusicPlayer.PlayLooping();
+        }
+
+        public static IEngine Instance
+        {
+            get
+            {
+                return instanceHolder;
+            }
         }
 
         public event EngineMessage OnEngineMessageEvent;
@@ -98,16 +111,29 @@
 
             if (this.firstPlayer.Army.Count == 0)
             {
+                this.ShowPlayer(this.secondPlayer);
                 this.FinalMessage(Constants.SecondPlayerWinMessage, this.secondPlayer);
             }
             else
             {
+                this.ShowPlayer(this.firstPlayer);
                 this.FinalMessage(Constants.FirstPlayerWinMessage, this.firstPlayer);
             }
 
             this.OnEngineMessageEvent?.Invoke(Constants.EndMessage);
         }
-        
+
+        private void ShowPlayer(IPlayer player)
+        {
+            this.writer.Clear();
+
+            this.writer.WriteLineInYellow(player.ToString());
+
+            foreach (var unit in player.Army)
+            {
+                this.writer.WriteLineInGreen(unit.Print());
+            }
+        }
 
         private void SetupConsol()
         {

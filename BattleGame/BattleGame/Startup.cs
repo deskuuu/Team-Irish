@@ -1,8 +1,5 @@
 ﻿namespace BattleGame
 {
-    using System;
-
-    using Common;
     using Contracts;
     using Engine;
 
@@ -10,10 +7,7 @@
     {
         public static void Main()
         {
-            var backgroundMusicPlayer = new MusicPlayer(Constants.MusicPath);
-            backgroundMusicPlayer.PlayLooping();
-            IEngine engine = new GameEngine();
-           
+            IEngine engine = GameEngine.Instance;
             engine.Start();
         }
     }
